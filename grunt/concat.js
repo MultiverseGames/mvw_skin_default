@@ -10,6 +10,6 @@ module.exports = {
             'js/dmf_modules/**/*.js',
             'js/functions.js'
         ],
-        dest: 'dist/js/production.js'
+        dest: 'default/js/production.js'
     }
 }

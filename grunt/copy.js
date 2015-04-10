@@ -5,24 +5,24 @@ module.exports = {
             	expand: true,
             	cwd:'libs/fontawesome/fonts/',
                 src: ['**'],
-                dest: 'dist/fonts/'
+                dest: 'default/fonts/'
             },
             {
             	expand: true,
             	cwd:'libs/open-sans-fontface/fonts/',
                 src: ['**'],
-                dest: 'dist/css/fonts/'
+                dest: 'default/css/fonts/'
             },     
             {
             	expand: true,
             	cwd:'libs/bootstrap/dist/fonts/',
                 src: ['**'],
-                dest: 'dist/fonts/'
+                dest: 'default/fonts/'
             },  
             {
                 expand: true,
                 src: ['img/**', 'before.html', 'after.html', 'js/countDown.js'],
-                dest: 'dist/'
+                dest: 'default/'
             }
         ]
     }

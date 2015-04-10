@@ -1,7 +1,7 @@
 module.exports = {
     cssmin: {// target
         files: {
-            'dist/css/production.min.css': 'dist/css/production.css'
+            'default/css/production.min.css': 'default/css/production.css'
         }     // 'destination': 'source'
     }
 }

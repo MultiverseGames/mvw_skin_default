@@ -6,7 +6,7 @@ module.exports = {
     },
     dist: {
         files: {
-            'dist/js/production.min.js': ['dist/js/production.js']
+            'default/js/production.min.js': ['default/js/production.js']
         }
     }
 }
