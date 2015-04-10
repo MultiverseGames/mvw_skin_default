@@ -1,2 +1,2 @@
 # mvw_skin_default
-The default skin for the http://multiversewarriors.com/
+The default skin for http://multiversewarriors.com/

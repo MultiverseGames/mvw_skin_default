@@ -1,0 +1,30 @@
+{
+  "name": "mvw_skin_default",
+  "version": "0.0.67",
+  "author": {
+    "name": "David Miller",
+    "email": "david__miller@hotmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MultiverseGames/mvw_skin_default.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-bower": "^0.18.0",
+    "grunt-concurrent": "^1.0.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-cssmin": "^0.12.2",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-dev-update": "^1.1.0",
+    "grunt-newer": "^1.1.0",
+    "grunt-sass": "^0.18.1",
+    "grunt-version": "^1.0.0",
+    "load-grunt-config": "^0.16.0"
+  },
+  "dependencies": {
+    "time-grunt": "^0.3.1"
+  }
+}

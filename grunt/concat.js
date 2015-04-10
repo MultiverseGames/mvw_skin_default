@@ -1,0 +1,15 @@
+module.exports = {
+    js: {
+        src: [
+            'libs/jquery/dist/jquery.js',
+            'libs/bootstrap/dist/js/bootstrap.js',
+            'libs/jquery.nicescroll/jquery.nicescroll.js',
+            'libs/jquery-sticky/jquery.sticky.js',
+            'libs/bootstrap-markdown/js/bootstrap-markdown.js',
+            'libs/dmf/dist/dmf.js',
+            'js/dmf_modules/**/*.js',
+            'js/functions.js'
+        ],
+        dest: 'dist/js/production.js'
+    }
+}

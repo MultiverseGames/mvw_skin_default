@@ -1,0 +1,38 @@
+/* Progress bar */
+.progress {
+  background-color: rgba(0, 0, 0, 0.45);
+  margin: 5px 0;
+  height: 8px;
+}
+
+.progress-small {
+  height: 4px;
+}
+
+.progress-alt {
+  padding: 2px;
+}
+
+.progress-bar {
+  box-shadow: none;
+}
+
+.progress-vertical {
+  width: 10px;
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.progress-vertical.small {
+  width: 4px;
+}
+
+.progress-vertical.bottom .progress-bar {
+  position: absolute;
+  bottom: 0;
+}
+
+.progress-vertical .progress-bar {
+  width: 100%;
+}

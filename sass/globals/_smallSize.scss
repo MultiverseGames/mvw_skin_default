@@ -1,0 +1,58 @@
+@media only screen and (min-width: $sm-brkp) {
+  /* Expand Bootstrap Panel styles */
+  .panel.inline {
+    display: inline-block;
+  }
+
+  /* TOS */
+  #tos {
+    padding: 30px;
+  }
+
+  #tos > header > h1, #error-page h1 {
+    font-size: 60px;
+  }
+
+  #tos .box {
+    width: 500px;
+  }
+
+  /* recruitexternal */
+  #recruitexternal {
+    padding: 30px;
+  }
+
+  #recruitexternal > header > h1, #error-page h1 {
+    font-size: 60px;
+  }
+
+  #recruitexternal .box {
+    width: 500px;
+  }
+
+  /* Team */
+  #team {
+    padding: 30px;
+  }
+
+  #team > header > h1, #error-page h1 {
+    font-size: 60px;
+  }
+
+  #team .box {
+    width: 500px;
+  }
+
+  /* Help */
+  #help {
+    padding: 30px;
+  }
+
+  #help > header > h1, #error-page h1 {
+    font-size: 60px;
+  }
+
+  #help .box {
+    width: 500px;
+  }
+}

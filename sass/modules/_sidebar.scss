@@ -1,0 +1,211 @@
+/* Sidebar */
+#sidebar {
+  width: 233px;
+  float: left;
+  background: rgba(0,0,0,0.3);
+  height: 100%;
+//  position: absolute;
+
+  position: fixed;
+  /* Probably exists to make room for the footer, but footer isn't further down anyways, review when fixing footer */
+  left: 0; /* needs to be set for transition to be detected */
+  transition: all 500ms;
+  top: auto; /* some weird top styles coming from the template, override it*/
+}
+
+#sidebar .side-menu  {
+  margin: 0;
+}
+
+.ie9 #sidebar {
+  min-height: 100vh;
+}
+
+.side-menu > li > a {
+  display: inline-block;
+  position: relative;
+  z-index: 10;
+  font-size: 12px;
+  height: 42px;
+  margin-bottom: -4px;
+  text-align: center;
+  opacity: 0.55;
+}
+
+.side-menu .menu-item {
+  white-space: nowrap;
+  background: rgba(0,0,0,0.95);
+  z-index: 9;
+  width: 188px;
+  display: block;
+  line-height: normal;
+  text-align: left;
+  -webkit-backface-visibility: hidden;
+}
+
+.side-menu span.menu-item {
+  top: 0;
+  padding: 13px 15px 13px 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.side-menu .dropdown span.menu-item {
+  top: 0;
+}
+
+.side-menu ul.menu-item {
+  top: 42px;
+  padding: 5px 0 13px;
+
+}
+
+.side-menu ul li > a {
+  padding: 4px 8px;
+  float: left;
+  width: 100%;
+}
+
+ul.menu-item a.active {
+  color: #FFD600;
+}
+
+.side-widgets {
+  width: 188px;
+  float: left;
+  position: relative;
+}
+
+.user-side-info {
+  width: 100%;
+  float: right;
+  margin-top: 33px;
+}
+
+
+@media (max-width: 780px) {
+  #sidebar {
+    top: -51px;
+    z-index: 9999;
+    position: absolute;
+    height: 100%;
+    height: calc(100% + 51px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: rgba(0,0,0,0.9);
+    -webkit-transform: translate3d(-233px,0,0);
+    -moz-transform: translate3d(-233px,0,0);
+    transform: translate3d(-233px,0,0);
+  }
+
+  .ie9 #sidebar {
+    position: absolute;
+    left: -233px;
+  }
+
+  #sidebar .s-widget:not(#profile-menu) {
+    display: none;
+  }
+
+  #sidebar.toggled {
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+  }
+
+  .ie9 #sidebar.toggled {
+    left: 0;
+  }
+
+  .side-widgets {
+    width: 100%;
+  }
+
+  .s-widget .tile-title, .s-widget .fc-header {
+    background: rgba(95, 94, 94, 0.35);
+  }
+
+  .side-menu {
+    float: left;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+  }
+
+  .side-menu > li {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    float: left;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .side-menu > li > a {
+    opacity: 1;
+  }
+
+  .side-menu .menu-item {
+    float: left;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    margin-left: 45px;
+  }
+
+  .side-menu ul.menu-item {
+    width: 100%;
+  }
+
+  ul.menu-item a.active {
+    color: #FFD600;
+    font-weight: bold;
+  }
+}
+
+@media (min-width: 780px) {
+  /* Sidebar */
+  #sidebar {
+    padding-left: 45px;
+  }
+
+  #sidebar.toggled {
+    position: absolute;
+    left: -233px;
+  }
+
+  #sidebar .side-menu {
+    width: 45px;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  #sidebar .side-menu > li > a {
+    width: 100%;
+  }
+
+  .side-menu .menu-item {
+    position: absolute;
+    left: 70px;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: all 230ms;
+    -moz-transition: all 230ms;
+    -o-transition: all 230ms;
+  }
+
+  .side-menu > li:hover .menu-item {
+    left: 45px;
+    opacity: 1;
+    z-index: 20;
+    visibility: visible;
+  }
+}
+
+@media (min-width: $md-brkp) {
+  .side-menu > li > a:hover, .side-menu > li.active > a, .side-menu > li > a.active:hover, .side-menu > li.hovered > a {
+    background-color: rgba(0,0,0,0.95);
+    color: #fff;
+    opacity: 1;
+  }
+
+}
+
+
