@@ -6,6 +6,7 @@ module.exports = {
             'libs/jquery.nicescroll/jquery.nicescroll.js',
             'libs/jquery-sticky/jquery.sticky.js',
             'libs/bootstrap-markdown/js/bootstrap-markdown.js',
+            'libs/iCheck/icheck.min.js',
             'libs/dmf/dist/dmf.js',
             'js/dmf_modules/**/*.js',
             'js/functions.js'
