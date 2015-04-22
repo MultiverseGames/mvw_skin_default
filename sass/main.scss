@@ -23,7 +23,9 @@
 @import 'modules/header';
 @import 'modules/login';
 @import 'modules/register';
+@import 'modules/research';
 @import 'modules/sidebar';
+@import 'modules/covert_reports';
 /*Components*/
 @import 'components/alerts';
 @import 'components/badge';
@@ -78,9 +80,6 @@ body {
   font-size: initial;
 }
 
-.tile, .tile-dark, .tile-title, .table th {
-  background: rgba(0, 0, 0, 0.55);
-}
 
 .box.active {
   display: block;
@@ -117,21 +116,6 @@ body {
 
 /******* Overly specific stuff to refactor into something more generic ********/
 
-#research-attack tbody {
-  background-color: rgba(215, 44, 44, 0.05);
-}
-
-#research-hull tbody {
-  background-color: rgba(90, 57, 232, 0.05);
-}
-
-#research-shield tbody {
-  background-color: rgba(90, 242, 232, 0.05);
-}
-
-#research-economy tbody {
-  background-color: rgba(255, 255, 255, 0.05);
-}
 
 .mv-upgrade, .research-item {
   transition: width 0.25s;
@@ -156,16 +140,8 @@ body {
   min-height: 105px;
 }
 
-.research-item-desc {
-  /* make research descriptions looks a little bulkier*/
-  padding: 1em;
-}
 
-.research-item-desc strong {
-  font-size: 115%;
-}
-
-/* Make the bold numbers in the upkeep panel bigger to stand out mroe*/
+/* Make the bold numbers in the upkeep panel bigger to stand out more*/
 #upkeep .panel-body strong {
   font-size: 115%;
   font-family: Verdana, sans-serif;

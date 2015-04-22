@@ -1,0 +1,25 @@
+
+#research-attack tbody {
+  background-color: rgba(215, 44, 44, 0.05);
+}
+
+#research-hull tbody {
+  background-color: rgba(90, 57, 232, 0.05);
+}
+
+#research-shield tbody {
+  background-color: rgba(90, 242, 232, 0.05);
+}
+
+#research-economy tbody {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.research-item-desc {
+  /* make research descriptions looks a little bulkier*/
+  padding: 1em;
+}
+
+.research-item-desc strong {
+  font-size: 115%;
+}

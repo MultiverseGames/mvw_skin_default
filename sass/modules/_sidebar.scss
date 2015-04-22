@@ -1,7 +1,7 @@
 /* Sidebar */
 #sidebar {
   width: 233px;
-  float: left;
+//  float: left;
   background: rgba(0,0,0,0.3);
   height: 100%;
 //  position: absolute;
@@ -10,12 +10,12 @@
   /* Probably exists to make room for the footer, but footer isn't further down anyways, review when fixing footer */
   left: 0; /* needs to be set for transition to be detected */
   transition: all 500ms;
-  top: auto; /* some weird top styles coming from the template, override it*/
+//  top: auto; /* some weird top styles coming from the template, override it*/
 }
 
-#sidebar .side-menu  {
-  margin: 0;
-}
+//#sidebar .side-menu  {
+//  margin: 0;
+//}
 
 .ie9 #sidebar {
   min-height: 100vh;
@@ -79,13 +79,13 @@ ul.menu-item a.active {
 .user-side-info {
   width: 100%;
   float: right;
-  margin-top: 33px;
+//  margin-top: 33px;
 }
 
 
 @media (max-width: 780px) {
   #sidebar {
-    top: -51px;
+//    top: -51px;
     z-index: 9999;
     position: absolute;
     height: 100%;
@@ -117,11 +117,11 @@ ul.menu-item a.active {
     left: 0;
   }
 
-  .side-widgets {
-    width: 100%;
-  }
+//  .side-widgets {
+//    width: 100%;
+//  }
 
-  .s-widget .tile-title, .s-widget .fc-header {
+  .tile-title, .s-widget .fc-header {
     background: rgba(95, 94, 94, 0.35);
   }
 
