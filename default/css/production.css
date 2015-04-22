@@ -11540,12 +11540,6 @@ html, body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   margin: 0; }
 
-.tile-light {
-  background: rgba(0, 0, 0, 0.25); }
-
-.tile, .tile-dark, .tile-title, .table th {
-  background: rgba(0, 0, 0, 0.35); }
-
 .block-title {
   background: rgba(0, 0, 0, 0.3);
   font-size: 12px;
@@ -11610,9 +11604,6 @@ small {
 img {
   max-width: 100%; }
 
-.well {
-  border: 0; }
-
 /* --------------------------------------------------------
     Bootstrap Overrides
 -----------------------------------------------------------*/
@@ -11627,6 +11618,13 @@ img {
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   padding-left: 7px;
   padding-right: 7px; }
+
+.well {
+  border: 0; }
+
+.no-gutter > [class*='col-'] {
+  padding-right: 0;
+  padding-left: 0; }
 
 @media only screen and (max-width: 767px) {
   nav.btn-group-justified > .btn {
@@ -11932,22 +11930,35 @@ img {
     width: 100%;
     width: calc(100% - 30px); } }
 
+#research-attack tbody {
+  background-color: rgba(215, 44, 44, 0.05); }
+
+#research-hull tbody {
+  background-color: rgba(90, 57, 232, 0.05); }
+
+#research-shield tbody {
+  background-color: rgba(90, 242, 232, 0.05); }
+
+#research-economy tbody {
+  background-color: rgba(255, 255, 255, 0.05); }
+
+.research-item-desc {
+  /* make research descriptions looks a little bulkier*/
+  padding: 1em; }
+
+.research-item-desc strong {
+  font-size: 115%; }
+
 /* Sidebar */
 #sidebar {
   width: 233px;
-  float: left;
   background: rgba(0, 0, 0, 0.3);
   height: 100%;
   position: fixed;
   /* Probably exists to make room for the footer, but footer isn't further down anyways, review when fixing footer */
   left: 0;
   /* needs to be set for transition to be detected */
-  transition: all 500ms;
-  top: auto;
-  /* some weird top styles coming from the template, override it*/ }
-
-#sidebar .side-menu {
-  margin: 0; }
+  transition: all 500ms; }
 
 .ie9 #sidebar {
   min-height: 100vh; }
@@ -12000,12 +12011,10 @@ ul.menu-item a.active {
 
 .user-side-info {
   width: 100%;
-  float: right;
-  margin-top: 33px; }
+  float: right; }
 
 @media (max-width: 780px) {
   #sidebar {
-    top: -51px;
     z-index: 9999;
     position: absolute;
     height: 100%;
@@ -12027,9 +12036,7 @@ ul.menu-item a.active {
     transform: translate3d(0, 0, 0); }
   .ie9 #sidebar.toggled {
     left: 0; }
-  .side-widgets {
-    width: 100%; }
-  .s-widget .tile-title, .s-widget .fc-header {
+  .tile-title, .s-widget .fc-header {
     background: rgba(95, 94, 94, 0.35); }
   .side-menu {
     float: left;
@@ -12086,6 +12093,20 @@ ul.menu-item a.active {
     background-color: rgba(0, 0, 0, 0.95);
     color: #fff;
     opacity: 1; } }
+
+.covert-report-unknown {
+  border: 1px dotted white;
+  text-align: center;
+  font-size: large;
+  font-variant: small-caps;
+  min-height: 50px; }
+
+.covert-operation-panel .progress {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  opacity: 0.7; }
 
 /*Components*/
 /* Alerts */
@@ -12406,23 +12427,11 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
   width: 100%;
   padding: 7px 10px 7px; }
 
-.tile-config {
-  position: absolute;
-  top: 0;
-  height: 27px;
-  right: 0; }
+.tile-light {
+  background: rgba(0, 0, 0, 0.25); }
 
-.tile-config > .tile-menu {
-  width: 34px;
-  height: 26px;
-  display: inline-block;
-  background-color: transparent;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url(../img/icon/tile-actions.png); }
-
-.tile-config > a:hover {
-  background-color: rgba(0, 0, 0, 0.3); }
+.tile, .tile-dark, .tile-title, .table th {
+  background: rgba(0, 0, 0, 0.55); }
 
 body {
   margin: 0;
@@ -12457,9 +12466,6 @@ body {
 .block-title.initial {
   font-size: initial; }
 
-.tile, .tile-dark, .tile-title, .table th {
-  background: rgba(0, 0, 0, 0.55); }
-
 .box.active {
   display: block;
   -webkit-animation-name: fadeIn;
@@ -12486,18 +12492,6 @@ body {
 
 /******************************* END BUTTONS **********************************/
 /******* Overly specific stuff to refactor into something more generic ********/
-#research-attack tbody {
-  background-color: rgba(215, 44, 44, 0.05); }
-
-#research-hull tbody {
-  background-color: rgba(90, 57, 232, 0.05); }
-
-#research-shield tbody {
-  background-color: rgba(90, 242, 232, 0.05); }
-
-#research-economy tbody {
-  background-color: rgba(255, 255, 255, 0.05); }
-
 .mv-upgrade, .research-item {
   transition: width 0.25s; }
 
@@ -12516,14 +12510,7 @@ body {
   /*padding: 0.5em;*/
   min-height: 105px; }
 
-.research-item-desc {
-  /* make research descriptions looks a little bulkier*/
-  padding: 1em; }
-
-.research-item-desc strong {
-  font-size: 115%; }
-
-/* Make the bold numbers in the upkeep panel bigger to stand out mroe*/
+/* Make the bold numbers in the upkeep panel bigger to stand out more*/
 #upkeep .panel-body strong {
   font-size: 115%;
   font-family: Verdana, sans-serif; }
