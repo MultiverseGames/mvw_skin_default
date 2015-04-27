@@ -34,11 +34,14 @@
 //}
 
 
+.tile, .tile-title, .table th {
+  background: rgba(0, 0, 0, 0.65);
+}
+
 .tile-light {
   background: rgba(0, 0, 0, 0.25);
 }
 
-
-.tile, .tile-dark, .tile-title, .table th {
-  background: rgba(0, 0, 0, 0.55);
+.tile-dark {
+  background: rgba(0, 0, 0, 0.8) !important;
 }
