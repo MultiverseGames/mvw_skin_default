@@ -4,21 +4,20 @@
   margin-right: 4px;
 }
 
-
 #menu-toggle {
 
   width: 45px;
   height: 49px;
-//  background-repeat: no-repeat;
-//  background-position: center;
+  //  background-repeat: no-repeat;
+  //  background-position: center;
   float: left;
   position: absolute;
   left: 0;
   top: 0;
   padding: 14px 12px 13px;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 
-//  #menu-toggle { background-image: url(../img/icon/menu.png); }
+  //  #menu-toggle { background-image: url(../img/icon/menu.png); }
 }
 
 .fa.top {
@@ -32,14 +31,14 @@
   overflow: hidden;
 }
 
-
 /* Header */
 #header {
-  border-bottom: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   min-height: 50px;
   position: relative;
   padding-right: 7px;
   z-index: 10000;
+  width: 100%; //keeps the header wide when sticky header activates
 }
 
 #header, #header > .media-body, #header #top-menu {
@@ -62,7 +61,6 @@
   margin: 0;
 }
 
-
 #top-menu .tm-icon:hover span, #top-menu .tm-icon.open span, .drawer-toggle.open span {
   min-width: 80px !important;
 }
@@ -74,11 +72,10 @@
   margin-right: 0;
 }
 
-
 #top-menu .tm-icon > a {
   padding: 0 8px 0 0;
   white-space: nowrap;
-  height:50px;
+  height: 50px;
   float: left;
 }
 
