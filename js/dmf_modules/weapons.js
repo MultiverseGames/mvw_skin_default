@@ -1,10 +1,7 @@
 dmf.createModule('weapons', function (c, config) {
     'use strict';
 
-    var properties = {
-        id: 'weapons',
-        listeners: {}
-    };
+    var properties = {};
 
     var elements = {};
 

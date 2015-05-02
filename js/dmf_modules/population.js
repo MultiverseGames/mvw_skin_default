@@ -1,10 +1,7 @@
 dmf.createModule('population', function (c, config) {
     'use strict';
 
-    var properties = {
-        id: 'population',
-        listeners: {}
-    };
+    var properties = {};
 
     var elements = {};
 
@@ -17,11 +14,9 @@ dmf.createModule('population', function (c, config) {
         elements['pg-max-fill'].on('click', changeValue);
     }
 
-
     function changeValue() {
         elements['pg-max-fill'].parents('.input-group').find('input').val(elements['pg-max-fill'].data('max'));
     }
-
 
     return {
         properties: properties,

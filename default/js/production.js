@@ -16352,9 +16352,6 @@ var dmf = function() {
                 debug = !debug;
             }
         },
-        extendConfig: function(moduleConfig) {
-            this.extend(this.config, moduleConfig);
-        },
         createModule: function(moduleID, creator) {
             if (typeof moduleID === 'string' && typeof creator === 'function') {
 
@@ -16468,8 +16465,15 @@ var dmf = function() {
 
         },
         notify: function(event) {
-            // Allows shorthand, trigged via event name only without requiring data
-            if (typeof event === 'string') {
+
+            if (arguments.length == 2) {
+                // Allows seperate name and data parameter, useful for primitive types data
+                event = {
+                    type: arguments[0],
+                    data: arguments[1]
+                };
+            } else if (typeof event === 'string') {
+                // Allows shorthand, trigged via event name only without requiring data
                 event = {
                     type: event,
                     data: {}
@@ -16515,106 +16519,29 @@ var dmf = function() {
             }
 
         },
-        is_arr: function(arr) {
-            return jQuery.isArray(arr);
+        is_arr: function(obj) {
+            return toString.call(obj) == '[object Array]';
         },
         is_obj: function(obj) {
-            return jQuery.isPlainObject(obj);
+            return obj === Object(obj);
         },
-        extend: function(targetObject, extendObject) {
-            jQuery.extend(true, targetObject, extendObject);
+        extend: function() {
+            for (var i = 1; i < arguments.length; i++)
+                for (var key in arguments[i])
+                    if (arguments[i].hasOwnProperty(key))
+                        arguments[0][key] = arguments[i][key];
+            return arguments[0];
         }
     };
 }();
 
-//Deprecated namespace usage, delete in future versions
-var CORE = dmf;
-
-dmf.dom = function() {
-    'use strict';
-    return {
-        find: function(selector, context) {
-            var ret = {};
-
-            if (context) {
-                ret = context.querySelector(selector);
-            } else {
-                ret = document.querySelector(selector);
-            }
-            return ret;
-        },
-        hide: function(element) {
-            dmf.dom.addClass(element, 'hidden');
-            dmf.dom.removeClass(element, 'visible');
-        },
-        show: function(element) {
-            dmf.dom.addClass(element, 'visible');
-            dmf.dom.removeClass(element, 'hidden');
-        },
-        listen: function(element, evt, fn) {
-            if (element && evt) {
-                if (typeof evt === 'function') {
-                    fn = evt;
-                    evt = 'click';
-                }
-                element.addEventListener(evt, fn);
-            } else {
-                // log wrong arguments
-            }
-        },
-        ignore: function(element, evt, fn) {
-            if (element && evt) {
-                if (typeof evt === 'function') {
-                    fn = evt;
-                    evt = 'click';
-                }
-                element.removeEventListener(evt, fn);
-            } else {
-                // log wrong arguments
-            }
-        },
-        addClass: function(element, className) {
-            jQuery(element).addClass(className);
-        },
-        removeClass: function(element, className) {
-            jQuery(element).removeClass(className);
-        },
-        toggleClass: function(element, toggleClass) {
-            jQuery(element).toggleClass(toggleClass);
-        },
-        emptyNode: function(element) {
-            if (element instanceof jQuery) {
-                element.html('');
-            } else {
-                while (element.firstChild) {
-                    element.removeChild(element.firstChild);
-                }
-            }
-        },
-        append: function(element, toAppend) {
-            if (!(element instanceof jQuery)) {
-                element = $(element);
-            }
-
-            if (!(toAppend instanceof jQuery)) {
-                toAppend = $(toAppend);
-            }
-
-            element.append(toAppend);
-        }
-    };
-}();
-
-dmf.createModule('bank', function (c, config) {
+dmf.createModule('bank', function(c, config) {
     'use strict';
 
-    var properties = { // Properties must exist, only id is required
-        id: 'bank', //name of module goes here, should match the name used above
-        listeners: {} // Can stay blank, used for communicating between modules
-    };
-
+    var properties = {};
+    
     var elements = {};
-    // Optional function, will execute when module is started
+
     function initialize() {
         elements['bank-withdraw'] = document.getElementById('bank-withdraw'); //main panel / container
         bindEvents();
@@ -16624,7 +16551,6 @@ dmf.createModule('bank', function (c, config) {
         $(elements['bank-withdraw']).on('click', '.withdraw-max-fill', changeValue);
     }
 
-
     function changeValue(event) {
         var maxLink = event.target;
         var label = $(maxLink).parents('label');
@@ -16632,40 +16558,30 @@ dmf.createModule('bank', function (c, config) {
         input.value = maxLink.innerHTML;
     }
 
-    // Optional function, will execute when module is stopped
-    // function destroy() {
-    // }
-
-
-    return { // Returns references to module functions for access by the framework
-        properties: properties, // must include this
-        initialize: initialize // include if initialize function exists
-        // destroy: destroy  // include if destroy function exists
+    return {
+        properties: properties,
+        initialize: initialize
     };
-
 });
 
-dmf.createModule('name of module', function (c, config) {
+dmf.createModule('name of module', function(c, config) {
     'use strict';
 
-    var properties = { // Properties must exist, only id is required
-        id: 'name of module', //name of module goes here, should match the name used above
-        listeners: {} // Can stay blank, used for communicating between modules
+    var properties = { // Properties object required
+        listeners: {} // Can stay blank or be absent used for communicating between modules
     };
 
     // Optional function, will execute when module is started
-    function initialize() {
-    }
+    function initialize() {}
 
     // Optional function, will execute when module is stopped
-    function destroy() {
-    }
+    function destroy() {}
 
 
     return { // Returns references to module functions for access by the framework
         properties: properties, // must include this
         initialize: initialize, // include if initialize function exists
-        destroy: destroy  // include if destroy function exists
+        destroy: destroy // include if destroy function exists
     };
 
 });
@@ -16673,10 +16589,7 @@ dmf.createModule('name of module', function (c, config) {
 dmf.createModule('launcher', function (c, config) {
     'use strict';
 
-    var properties = {
-        id: 'launcher',
-        listeners: {}
-    };
+    var properties = {};
 
     function initialize() {
         var page = getPage();
@@ -16687,7 +16600,6 @@ dmf.createModule('launcher', function (c, config) {
         // If this pages needs multiple modules, first module should start them
         c.startModule(page);
     }
-
 
     /************* General Functions ******************************************/
 
@@ -16709,10 +16621,7 @@ dmf.createModule('launcher', function (c, config) {
 dmf.createModule('population', function (c, config) {
     'use strict';
 
-    var properties = {
-        id: 'population',
-        listeners: {}
-    };
+    var properties = {};
 
     var elements = {};
 
@@ -16725,11 +16634,9 @@ dmf.createModule('population', function (c, config) {
         elements['pg-max-fill'].on('click', changeValue);
     }
 
-
     function changeValue() {
         elements['pg-max-fill'].parents('.input-group').find('input').val(elements['pg-max-fill'].data('max'));
     }
-
 
     return {
         properties: properties,
@@ -16741,10 +16648,7 @@ dmf.createModule('population', function (c, config) {
 dmf.createModule('weapons', function (c, config) {
     'use strict';
 
-    var properties = {
-        id: 'weapons',
-        listeners: {}
-    };
+    var properties = {};
 
     var elements = {};
 

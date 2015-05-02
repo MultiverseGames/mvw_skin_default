@@ -1,10 +1,7 @@
 dmf.createModule('launcher', function (c, config) {
     'use strict';
 
-    var properties = {
-        id: 'launcher',
-        listeners: {}
-    };
+    var properties = {};
 
     function initialize() {
         var page = getPage();
@@ -15,7 +12,6 @@ dmf.createModule('launcher', function (c, config) {
         // If this pages needs multiple modules, first module should start them
         c.startModule(page);
     }
-
 
     /************* General Functions ******************************************/
 
