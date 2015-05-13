@@ -2,4 +2,6 @@ default:
   - 'concurrent:first'
   - 'concurrent:second'
   - 'concurrent:third'
-  #- 'concurrent:fourth'
+dev:
+  - 'concurrent:first'
+  - 'concurrent:second'

@@ -1,7 +1,5 @@
-dmf.createModule('launcher', function (c, config) {
+dmf.createModule('launcher', function(c, config) {
     'use strict';
-
-    var properties = {};
 
     function initialize() {
         var page = getPage();
@@ -24,8 +22,7 @@ dmf.createModule('launcher', function (c, config) {
     }
 
     return {
-        properties: properties,
-        initialize: initialize
+        start: initialize
     };
 
 });

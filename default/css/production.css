@@ -11759,7 +11759,8 @@ img {
   min-height: 50px;
   position: relative;
   padding-right: 7px;
-  z-index: 10000; }
+  z-index: 10000;
+  width: 100%; }
 
 #header, #header > .media-body, #header #top-menu {
   overflow: visible; }
@@ -12070,8 +12071,7 @@ ul.menu-item a.active {
     width: 45px;
     height: 100%;
     left: 0;
-    position: absolute;
-    background: rgba(0, 0, 0, 0.5); }
+    position: absolute; }
   #sidebar .side-menu > li > a {
     width: 100%; }
   .side-menu .menu-item {
@@ -12174,6 +12174,9 @@ ul.menu-item a.active {
 .badge-trp {
   background: transparent;
   color: #fff; }
+
+.btn:not(.form-control) {
+  border: 1px dotted #595959; }
 
 /* Dropdown */
 .dropdown-menu {
@@ -12301,10 +12304,6 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
   font-size: 12px;
   color: #fff; }
 
-.panel-title > a {
-  display: block;
-  width: 100%; }
-
 .panel-group .panel + .panel {
   margin-top: 1px; }
 
@@ -12323,11 +12322,7 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
 /* Progress bar */
 .progress {
   background-color: rgba(0, 0, 0, 0.45);
-  margin: 5px 0;
-  height: 8px; }
-
-.progress-small {
-  height: 4px; }
+  margin: 5px 0; }
 
 .progress-alt {
   padding: 2px; }
@@ -12427,11 +12422,14 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
   width: 100%;
   padding: 7px 10px 7px; }
 
+.tile, .tile-title, .table th {
+  background: rgba(0, 0, 0, 0.65); }
+
 .tile-light {
   background: rgba(0, 0, 0, 0.25); }
 
-.tile, .tile-dark, .tile-title, .table th {
-  background: rgba(0, 0, 0, 0.55); }
+.tile-dark {
+  background: rgba(0, 0, 0, 0.8) !important; }
 
 body {
   margin: 0;

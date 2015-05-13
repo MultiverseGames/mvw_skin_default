@@ -1,7 +1,7 @@
 module.exports = {
-    sass: {
-        files: ['sass/**/*'],
-        tasks: ['version','sass']
+    build: {
+        files: ['sass/**/*','js/**/*'],
+        tasks: ['dev']
     },
     grunt: {
         files: ['grunt/**/*'],

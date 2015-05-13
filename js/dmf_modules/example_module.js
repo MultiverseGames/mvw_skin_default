@@ -1,21 +1,16 @@
-dmf.createModule('name of module', function(c, config) {
+dmf.createModule('name-of-module', function(c, config) {
     'use strict';
 
-    var properties = { // Properties object required
-        listeners: {} // Can stay blank or be absent used for communicating between modules
-    };
+    // Example start function, will execute when module is started
+    function startFunction() {}
 
-    // Optional function, will execute when module is started
-    function initialize() {}
-
-    // Optional function, will execute when module is stopped
-    function destroy() {}
+    // Example stop function, will execute when module is stopped
+    function stopFunction() {}
 
 
-    return { // Returns references to module functions for access by the framework
-        properties: properties, // must include this
-        initialize: initialize, // include if initialize function exists
-        destroy: destroy // include if destroy function exists
-    };
-
+    return { // setup options are optional, but an object must be returned
+        listeners: {}, // Can stay blank or be absent. Used for communicating between modules
+        start: startFunction, //include to have a function execute when the module starts
+        stop: stopFunction //include to have a function execute when the module stops
+    }
 });

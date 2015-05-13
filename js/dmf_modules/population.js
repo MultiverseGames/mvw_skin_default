@@ -1,7 +1,5 @@
-dmf.createModule('population', function (c, config) {
+dmf.createModule('population', function(c, config) {
     'use strict';
-
-    var properties = {};
 
     var elements = {};
 
@@ -19,8 +17,7 @@ dmf.createModule('population', function (c, config) {
     }
 
     return {
-        properties: properties,
-        initialize: initialize
+        start: initialize
     };
 
 });

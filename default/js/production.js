@@ -1,5 +1,5 @@
 /*!
- * jQuery JavaScript Library v2.1.3
+ * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
  *
  * Includes Sizzle.js
@@ -9,7 +9,7 @@
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2014-12-18T15:11Z
+ * Date: 2015-04-28T16:01Z
  */
 
 (function( global, factory ) {
@@ -67,7 +67,7 @@ var
 	// Use the correct document accordingly with window argument (sandbox)
 	document = window.document,
 
-	version = "2.1.3",
+	version = "2.1.4",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -531,7 +531,12 @@ jQuery.each("Boolean Number String Function Array Date RegExp Object Error".spli
 });
 
 function isArraylike( obj ) {
-	var length = obj.length,
+
+	// Support: iOS 8.2 (not reproducible in simulator)
+	// `in` check used to prevent JIT error (gh-2145)
+	// hasOwn isn't used here due to false negatives
+	// regarding Nodelist length in IE
+	var length = "length" in obj && obj.length,
 		type = jQuery.type( obj );
 
 	if ( type === "function" || jQuery.isWindow( obj ) ) {
@@ -16315,82 +16320,64 @@ b=c.id,g=-p+"%",d=100+2*p+"%",d={position:"absolute",top:g,left:g,display:"block
 A(a,!1,!0)}else B&&(/ut|nd/.test(d)?(h[_remove](v),e[_remove](w)):(h[_add](v),e[_add](w)));if(_mobile)b.stopPropagation();else return!1}});a.on(_click+".i focus.i blur.i keyup.i keydown.i keypress.i",function(b){var d=b[_type];b=b.keyCode;if(d==_click)return!1;if("keydown"==d&&32==b)return c[_type]==r&&c[k]||(c[k]?q(a,k):x(a,k)),!1;if("keyup"==d&&c[_type]==r)!c[k]&&x(a,k);else if(/us|ur/.test(d))h["blur"==d?_remove:_add](s)});d.on(_click+" mousedown mouseup mouseover mouseout "+_touch,function(b){var d=
 b[_type],e=/wn|up/.test(d)?t:v;if(!c[n]){if(d==_click)A(a,!1,!0);else{if(/wn|er|in/.test(d))h[_add](e);else h[_remove](e+" "+t);if(z.length&&B&&e==v)z[/ut|nd/.test(d)?_remove:_add](w)}if(_mobile)b.stopPropagation();else return!1}})})}})(window.jQuery||window.Zepto);
 
-/**
- * [CORE description]
- */
 var dmf = function() {
     'use strict';
-    var moduleData = {};
-    var debug = false;
+
+    var default_settings = {
+        startup: null
+    };
 
     return {
-        classes: {},
         config: {},
         data: {},
-        events: {},
-        fn: {},
-        modules: moduleData,
+        factories: null, // populated by factories.js 
+        fn: null, // populated by functions.js
+        events: {}, // used to map framework event-module bindings
+        modules: {},
         settings: {},
-        templates: {},
         /**
          * Triggers starter logic for all game modules
          * @return {[type]} [description]
          */
         activate: function(settings) {
-            if (typeof settings.debug !== 'undefined') {
-                this.debug(settings.debug);
-            }
+            this.settings = this.fn.extend({}, default_settings, settings);
 
-            if (typeof settings.startup !== 'undefined') {
-                this.startModule(settings.startup);
-            }
-        },
-        debug: function(on) {
-            if (on !== 'undefined') {
-                debug = on ? true : false;
-            } else {
-                debug = !debug;
-            }
-        },
-        createModule: function(moduleID, creator) {
-            if (typeof moduleID === 'string' && typeof creator === 'function') {
-
-                moduleData[moduleID] = {
-                    create: creator,
-                    config: this.config[moduleID],
-                    instance: null
-                };
-
-                this.log(1, "Module '" + moduleID + "' Registration : SUCCESS");
-            } else {
-                this.log(2, "Module '" + moduleID + "' Registration : FAILED : one or more arguments are of incorrect type");
-            }
-        },
-        getModule: function(moduleID) {
-            var mod = moduleData[moduleID];
-            if (mod) {
-                return mod.create(this, mod.config);
-            } else {
+            if (!settings.startup) {
                 return false;
             }
+            return this.startModule(settings.startup);
+        },
+        registerModule: function(moduleID, creator) {
+            this.modules[moduleID] = {
+                create: creator,
+                config: this.config[moduleID],
+                instance: null
+            };
+        },
+        createModule: function() {
+            console.log('createModule is deprecated, use registerModule');
         },
         startModule: function(moduleID) {
-            var mod = moduleData[moduleID];
+            var mod = this.modules[moduleID];
 
-            if (mod) {
-                mod.instance = this.getModule(moduleID);
-
-                // Modules do not require an initializing function, use it if exists
-                if (mod.instance.initialize && typeof mod.instance.initialize === 'function') {
-                    mod.instance.initialize();
-                }
-
-                if (mod.instance.properties.listeners) {
-                    this.registerEvents(mod.instance.properties.listeners, moduleID);
-                }
-
-                this.log(1, "Start Module '" + moduleID + "': SUCCESS");
+            if (!mod) {
+                return false;
             }
+
+            var temp = mod.create(this, mod.config);
+            mod.instance = this.factories.module(temp);
+
+            mod = mod.instance;
+
+            if (mod.start) {
+                mod.start();
+            }
+
+            if (mod.listeners) {
+                this.registerEvents(mod.listeners, moduleID);
+            }
+
+            return mod;
         },
         /**
          * Starts multiple modules
@@ -16398,50 +16385,36 @@ var dmf = function() {
          * @return {[type]}         [description]
          */
         startModules: function(modules) {
-            modules.forEach(this.startModule, this);
-        },
-        startAllModules: function() {
-            var moduleID;
-            for (moduleID in moduleData) {
-                if (moduleData.hasOwnProperty(moduleID)) {
-                    this.startModule(moduleID);
-                }
-            }
+            modules.forEach(this.startModule);
         },
         stopModule: function(moduleID) {
-            var data = moduleData[moduleID];
+            var mod = this.modules[moduleID];
 
-            if (!data || !data.instance) {
-                this.log(2, "Stop Module '" + moduleID + "': FAILED : module does not exist or has not been started");
-                return;
+            if (!mod) {
+                //module does not exist
+                return false;
+            } else if (!mod.instance) {
+                //module has not been started
+                return false;
             }
 
+            mod = mod.instance;
 
-            if (data.instance.properties.listeners) {
-                this.removeEvents(Object.keys(data.instance.properties.listeners), moduleID);
+            if (mod.listeners) {
+                this.deregisterEvents(mod.listeners, moduleID);
             }
 
             // Modules do not require a destroy function, use it if exists
-            if (data.instance.destroy && typeof data.instance.destroy === 'function') {
-                data.instance.destroy();
+            if (mod.stop) {
+                mod.stop();
             }
 
-            data.instance = null;
-            delete data.instance;
+            delete this.modules[moduleID].instance;
 
-            this.log(1, "Stop Module '" + moduleID + "': SUCCESS");
-
+            return true;
         },
         stopModules: function(modules) {
             modules.forEach(this.stopModule, this);
-        },
-        stopAllModules: function() {
-            var moduleID;
-            for (moduleID in moduleData) {
-                if (moduleData.hasOwnProperty(moduleID)) {
-                    this.stopModule(moduleID);
-                }
-            }
         },
         /**
          * Binds framework events to a module
@@ -16450,9 +16423,8 @@ var dmf = function() {
          * @return {[type]}      [description]
          */
         registerEvents: function(evts, moduleId) {
-            if (!this.is_obj(evts) || !moduleId) {
-                this.log(1, "Error registering events for: " + moduleId);
-            }
+            // Currently only called via startModule, so modules existance 
+            // does not need to be validated here
 
             for (var eventKey in evts) {
                 // Add event to event list if not yet added
@@ -16464,9 +16436,20 @@ var dmf = function() {
             }
 
         },
+        /**
+         * Unsubscribes a single module from a set of events
+         */
+        deregisterEvents: function(evts, mod) {
+            for (var event in evts) {
+                delete this.events[event][mod];
+            }
+        },
+        /**
+         * Sends events to each listening module
+         */
         notify: function(event) {
 
-            if (arguments.length == 2) {
+            if (arguments.length === 2) {
                 // Allows seperate name and data parameter, useful for primitive types data
                 event = {
                     type: arguments[0],
@@ -16490,59 +16473,51 @@ var dmf = function() {
             for (moduleId in bindings) {
                 bindings[moduleId](event.data);
             }
-        },
-        /**
-         * Unsubscribes a single module from a set of events
-         * @param  {[type]} evts [description]
-         * @param  {[type]} mod  [description]
-         * @return {[type]}      [description]
-         */
-        removeEvents: function(evts, mod) {
-            // Should be a named function, but mod would not be available
-            evts.forEach(function(event, index, array) {
-                delete dmf.events[event][mod];
-            });
-        },
-
-        log: function(severity, messages) {
-            if (!debug) {
-                return;
-            }
-
-            // If message is not an array, make it an array so we can traverse it
-            if (!this.is_arr(messages)) {
-                messages = [messages];
-            }
-
-            for (var i = 0; i < messages.length; i++) {
-                console[(severity === 1) ? 'log' : (severity === 2) ? 'warn' : 'error'](JSON.stringify(messages[i], null, 4));
-            }
-
-        },
-        is_arr: function(obj) {
-            return toString.call(obj) == '[object Array]';
-        },
-        is_obj: function(obj) {
-            return obj === Object(obj);
-        },
-        extend: function() {
-            for (var i = 1; i < arguments.length; i++)
-                for (var key in arguments[i])
-                    if (arguments[i].hasOwnProperty(key))
-                        arguments[0][key] = arguments[i][key];
-            return arguments[0];
         }
     };
 }();
 
+(function() {
+    'use strict';
+    dmf.fn = {
+        is_arr: function(obj) {
+            return obj.constructor === Array;
+        },
+        extend: function() {
+            for (var i = 1; i < arguments.length; i++) {
+                for (var key in arguments[i]) {
+                    if (arguments[i].hasOwnProperty(key)) {
+                        arguments[0][key] = arguments[i][key];
+                    }
+                }
+            }
+            return arguments[0];
+        }
+    };
+})();
+
+(function(c) {
+    'use strict';
+    c.factories = {
+        module: function(newModule) {
+
+            var defaults = {
+                start: false,
+                stop: false,
+                listeners: false
+            };
+
+            return c.fn.extend({}, defaults, newModule);
+        }
+    };
+})(dmf);
+
 dmf.createModule('bank', function(c, config) {
     'use strict';
 
-    var properties = {};
-    
     var elements = {};
 
-    function initialize() {
+    function start() {
         elements['bank-withdraw'] = document.getElementById('bank-withdraw'); //main panel / container
         bindEvents();
     }
@@ -16559,37 +16534,29 @@ dmf.createModule('bank', function(c, config) {
     }
 
     return {
-        properties: properties,
-        initialize: initialize
+        start: start
     };
 });
 
-dmf.createModule('name of module', function(c, config) {
+dmf.createModule('name-of-module', function(c, config) {
     'use strict';
 
-    var properties = { // Properties object required
-        listeners: {} // Can stay blank or be absent used for communicating between modules
-    };
+    // Example start function, will execute when module is started
+    function startFunction() {}
 
-    // Optional function, will execute when module is started
-    function initialize() {}
-
-    // Optional function, will execute when module is stopped
-    function destroy() {}
+    // Example stop function, will execute when module is stopped
+    function stopFunction() {}
 
 
-    return { // Returns references to module functions for access by the framework
-        properties: properties, // must include this
-        initialize: initialize, // include if initialize function exists
-        destroy: destroy // include if destroy function exists
-    };
-
+    return { // setup options are optional, but an object must be returned
+        listeners: {}, // Can stay blank or be absent. Used for communicating between modules
+        start: startFunction, //include to have a function execute when the module starts
+        stop: stopFunction //include to have a function execute when the module stops
+    }
 });
 
-dmf.createModule('launcher', function (c, config) {
+dmf.createModule('launcher', function(c, config) {
     'use strict';
-
-    var properties = {};
 
     function initialize() {
         var page = getPage();
@@ -16612,16 +16579,13 @@ dmf.createModule('launcher', function (c, config) {
     }
 
     return {
-        properties: properties,
-        initialize: initialize
+        start: initialize
     };
 
 });
 
-dmf.createModule('population', function (c, config) {
+dmf.createModule('population', function(c, config) {
     'use strict';
-
-    var properties = {};
 
     var elements = {};
 
@@ -16639,16 +16603,13 @@ dmf.createModule('population', function (c, config) {
     }
 
     return {
-        properties: properties,
-        initialize: initialize
+        start: initialize
     };
 
 });
 
-dmf.createModule('weapons', function (c, config) {
+dmf.createModule('weapons', function(c, config) {
     'use strict';
-
-    var properties = {};
 
     var elements = {};
 
@@ -16695,8 +16656,7 @@ dmf.createModule('weapons', function (c, config) {
     }
 
     return {
-        properties: properties,
-        initialize: initialize
+        start: initialize
     };
 
 });

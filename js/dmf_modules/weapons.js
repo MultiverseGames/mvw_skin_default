@@ -1,7 +1,5 @@
-dmf.createModule('weapons', function (c, config) {
+dmf.createModule('weapons', function(c, config) {
     'use strict';
-
-    var properties = {};
 
     var elements = {};
 
@@ -48,8 +46,7 @@ dmf.createModule('weapons', function (c, config) {
     }
 
     return {
-        properties: properties,
-        initialize: initialize
+        start: initialize
     };
 
 });

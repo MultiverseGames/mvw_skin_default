@@ -1,11 +1,9 @@
 dmf.createModule('bank', function(c, config) {
     'use strict';
 
-    var properties = {};
-    
     var elements = {};
 
-    function initialize() {
+    function start() {
         elements['bank-withdraw'] = document.getElementById('bank-withdraw'); //main panel / container
         bindEvents();
     }
@@ -22,7 +20,6 @@ dmf.createModule('bank', function(c, config) {
     }
 
     return {
-        properties: properties,
-        initialize: initialize
+        start: start
     };
 });
