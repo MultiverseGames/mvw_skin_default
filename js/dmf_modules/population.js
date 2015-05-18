@@ -1,4 +1,4 @@
-dmf.createModule('population', function(c, config) {
+dmf.registerModule('population', function(c, config) {
     'use strict';
 
     var elements = {};

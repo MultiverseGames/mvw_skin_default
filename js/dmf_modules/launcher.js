@@ -1,10 +1,11 @@
-dmf.createModule('launcher', function(c, config) {
+dmf.registerModule('launcher', function(c, config) {
     'use strict';
 
     function initialize() {
         var page = getPage();
 
         // Start any generic modules needed by all pages here
+        c.startModule('all');
 
         // Start module specific to this page.
         // If this pages needs multiple modules, first module should start them

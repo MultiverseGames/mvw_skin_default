@@ -1,4 +1,4 @@
-dmf.createModule('name-of-module', function(c, config) {
+dmf.registerModule('name-of-module', function(c, config) {
     'use strict';
 
     // Example start function, will execute when module is started

@@ -1,4 +1,4 @@
-dmf.createModule('bank', function(c, config) {
+dmf.registerModule('bank', function(c, config) {
     'use strict';
 
     var elements = {};

@@ -1,4 +1,4 @@
-dmf.createModule('weapons', function(c, config) {
+dmf.registerModule('weapons', function(c, config) {
     'use strict';
 
     var elements = {};
