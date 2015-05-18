@@ -6253,6 +6253,30 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+/* -----------------------------------------
+   Markdown
+-------------------------------------------*/
+.md-editor, .md-editor > .md-header, .md-editor .md-footer {
+  display: block; }
+
+.md-editor > .md-header {
+  padding: 0 5px; }
+
+.md-editor > .md-preview {
+  min-height: 150px;
+  padding: 10px; }
+
+.md-editor > textarea {
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  outline: none;
+  margin: 0;
+  display: block;
+  padding: 10px;
+  color: #fff;
+  background: transparent;
+  width: 100%;
+  border: 0; }
+
 /*!
 Animate.css - http://daneden.me/animate
 Licensed under the MIT license
@@ -9960,30 +9984,6 @@ div.spinedit span:hover {
 .dark .note-editor.tile {
   background: none; }
 
-/* -----------------------------------------
-   Markdown
--------------------------------------------*/
-.md-editor, .md-editor > .md-header, .md-editor .md-footer {
-  display: block; }
-
-.md-editor > .md-header {
-  padding: 0 5px; }
-
-.md-editor > .md-preview {
-  min-height: 150px;
-  padding: 10px; }
-
-.md-editor > textarea {
-  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
-  outline: none;
-  margin: 0;
-  display: block;
-  padding: 10px;
-  color: #fff;
-  background: transparent;
-  width: 100%;
-  border: 0; }
-
 /* Width */
 .w-100 {
   width: 100%; }
@@ -12376,14 +12376,16 @@ a.piro_prev {
   -ms-touch-action: manipulation;
   touch-action: manipulation; }
 
-*:focus, *:active {
+*:focus,
+*:active {
   outline: none !important; }
 
 html {
   overflow-x: hidden;
   -ms-overflow-style: scrollbar; }
 
-html, body {
+html,
+body {
   background-attachment: fixed;
   height: 100%;
   font-family: 'Open Sans', sans-serif;
@@ -12393,8 +12395,7 @@ html, body {
 #sidebar,
 #top-menu .tm-icon,
 #top-menu .tm-icon span,
-.side-menu li
-.shortcut img,
+.side-menu li .shortcut img,
 .drawer,
 .shortcut,
 .chat-list,
@@ -12442,32 +12443,54 @@ hr {
   font-family: open-sans-regular;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); }
 
-body, button, input, textarea, select, .btn {
+body,
+button,
+input,
+textarea,
+select,
+.btn {
   -webkit-font-smoothing: antialiased; }
 
-body, a, input, .help-block {
+body,
+a,
+input,
+.help-block {
   color: #fff;
   text-shadow: 0 0 3px rgba(255, 255, 255, 0.4); }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'open-sans-light', sans-serif;
   font-weight: normal; }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin-top: 10px; }
 
-h1 small, h2 small, h3 small, h1 .small, h2 .small, h3 .small {
+h1 small,
+h2 small,
+h3 small,
+h1 .small,
+h2 .small,
+h3 .small {
   font-size: 60%;
   color: rgba(255, 255, 255, 0.5); }
 
-a:hover, a:focus {
+a:hover,
+a:focus {
   color: #FFD600;
   text-decoration: none; }
 
 a.underline {
   border-bottom: 1px dotted rgba(255, 255, 255, 0.35); }
 
-a.underline:hover, a.underline:focus {
+a.underline:hover,
+a.underline:focus {
   border-color: #FFD600; }
 
 small {
@@ -12475,6 +12498,9 @@ small {
 
 img {
   max-width: 100%; }
+
+.d-inline-block {
+  display: inline-block; }
 
 /* --------------------------------------------------------
     Bootstrap Overrides
@@ -12487,7 +12513,54 @@ img {
   margin-left: -7px;
   margin-right: -7px; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1,
+.col-sm-1,
+.col-md-1,
+.col-lg-1,
+.col-xs-2,
+.col-sm-2,
+.col-md-2,
+.col-lg-2,
+.col-xs-3,
+.col-sm-3,
+.col-md-3,
+.col-lg-3,
+.col-xs-4,
+.col-sm-4,
+.col-md-4,
+.col-lg-4,
+.col-xs-5,
+.col-sm-5,
+.col-md-5,
+.col-lg-5,
+.col-xs-6,
+.col-sm-6,
+.col-md-6,
+.col-lg-6,
+.col-xs-7,
+.col-sm-7,
+.col-md-7,
+.col-lg-7,
+.col-xs-8,
+.col-sm-8,
+.col-md-8,
+.col-lg-8,
+.col-xs-9,
+.col-sm-9,
+.col-md-9,
+.col-lg-9,
+.col-xs-10,
+.col-sm-10,
+.col-md-10,
+.col-lg-10,
+.col-xs-11,
+.col-sm-11,
+.col-md-11,
+.col-lg-11,
+.col-xs-12,
+.col-sm-12,
+.col-md-12,
+.col-lg-12 {
   padding-left: 7px;
   padding-right: 7px; }
 
@@ -12634,7 +12707,9 @@ img {
   z-index: 10000;
   width: 100%; }
 
-#header, #header > .media-body, #header #top-menu {
+#header,
+#header > .media-body,
+#header #top-menu {
   overflow: visible; }
 
 /* Logo */
@@ -12651,7 +12726,9 @@ img {
 #top-menu .tm-icon {
   margin: 0; }
 
-#top-menu .tm-icon:hover span, #top-menu .tm-icon.open span, .drawer-toggle.open span {
+#top-menu .tm-icon:hover span,
+#top-menu .tm-icon.open span,
+.drawer-toggle.open span {
   min-width: 80px !important; }
 
 #top-menu .time {
@@ -12666,7 +12743,8 @@ img {
   height: 50px;
   float: left; }
 
-#top-menu .tm-icon > a:hover, #top-menu .tm-icon > a:focus {
+#top-menu .tm-icon > a:hover,
+#top-menu .tm-icon > a:focus {
   color: #fff; }
 
 #top-menu .tm-icon img {
@@ -12678,10 +12756,13 @@ img {
   overflow: hidden;
   line-height: 48px; }
 
-#top-menu .tm-icon:hover span, #top-menu .tm-icon.open span, .drawer-toggle.open span {
+#top-menu .tm-icon:hover span,
+#top-menu .tm-icon.open span,
+.drawer-toggle.open span {
   width: 70px !important; }
 
-#top-menu .tm-icon:hover, #top-menu .tm-icon.open {
+#top-menu .tm-icon:hover,
+#top-menu .tm-icon.open {
   /* background: rgba(0,0,0,0.2) */ }
 
 #top-menu > .media-body {
@@ -12720,6 +12801,9 @@ img {
 
 .drawer-close:hover {
   opacity: 0.7; }
+
+#notifications .new {
+  background-color: rgba(255, 255, 255, 0.1); }
 
 @media (max-width: 780px) {
   #header {
@@ -12774,6 +12858,9 @@ img {
     font-size: 60px; }
   #login .box {
     width: 500px; } }
+
+.thread-post .panel-body {
+  white-space: pre-line; }
 
 #register > header > h1, #error-page h1 {
   margin: 0; }
@@ -12972,13 +13059,6 @@ ul.menu-item a.active {
   font-size: large;
   font-variant: small-caps;
   min-height: 50px; }
-
-.covert-operation-panel .progress {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  opacity: 0.7; }
 
 /*Components*/
 /* Alerts */
@@ -13221,6 +13301,13 @@ a.list-group-item.active > .badge,
 
 .progress-vertical .progress-bar {
   width: 100%; }
+
+.progress.progress-underlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  opacity: 0.7; }
 
 /* Tables */
 .table > thead > tr > th {

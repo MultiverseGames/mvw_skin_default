@@ -8,10 +8,14 @@ dmf.registerModule('mailwrite', function(c, config) {
     function activateMarkdownEditor() {
         $("#message").markdown({
             autofocus: false,
-            savable: false
+            savable: false,
+            iconlibrary: 'fa',
+            hiddenButtons: ['cmdPreview','cmdCode','cmdQuote','cmdImage'],
+            fullscreen: {
+                enable: false
+            }
         })
     }
-
 
     return {
         start: start

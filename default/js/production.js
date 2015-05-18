@@ -14961,10 +14961,10 @@ if (typeof jQuery === 'undefined') {
 })(jQuery);
 
 /* ===================================================
- * bootstrap-markdown.js v2.8.0
+ * bootstrap-markdown.js v2.9.0
  * http://github.com/toopay/bootstrap-markdown
  * ===================================================
- * Copyright 2013-2014 Taufan Aditya
+ * Copyright 2013-2015 Taufan Aditya
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15117,7 +15117,8 @@ if (typeof jQuery === 'undefined') {
         .on('focus',    $.proxy(this.focus, this))
         .on('keypress', $.proxy(this.keypress, this))
         .on('keyup',    $.proxy(this.keyup, this))
-        .on('change',   $.proxy(this.change, this));
+        .on('change',   $.proxy(this.change, this))
+        .on('select',   $.proxy(this.select, this));
 
       if (this.eventSupported('keydown')) {
         this.$textarea.on('keydown', $.proxy(this.keydown, this));
@@ -15180,6 +15181,8 @@ if (typeof jQuery === 'undefined') {
     } else {
       $editor.removeClass('md-fullscreen-mode');
       $('body').removeClass('md-nooverflow');
+
+      if (this.$isPreview == true) this.hidePreview().showPreview()
     }
 
     this.$isFullscreen = mode;
@@ -15377,11 +15380,10 @@ if (typeof jQuery === 'undefined') {
       }
 
       if (options.fullscreen.enable && options.fullscreen !== false) {
-        this.$editor.append('\
-          <div class="md-fullscreen-controls">\
-            <a href="#" class="exit-fullscreen" title="Exit fullscreen"><span class="'+this.__getIcon(options.fullscreen.icons.fullscreenOff)+'"></span></a>\
-          </div>');
-
+        this.$editor.append('<div class="md-fullscreen-controls">'
+                        + '<a href="#" class="exit-fullscreen" title="Exit fullscreen"><span class="' + this.__getIcon(options.fullscreen.icons.fullscreenOff) + '">'
+                        + '</span></a>'
+                        + '</div>');
         this.$editor.on('click', '.exit-fullscreen', function(e) {
           e.preventDefault();
           instance.setFullscreen(false);
@@ -15406,7 +15408,9 @@ if (typeof jQuery === 'undefined') {
       // parse with supported markdown parser
       var val = val || this.$textarea.val();
 
-      if (typeof markdown == 'object') {
+      if (this.$options.parser) {
+        content = this.$options.parser(val);
+      } else if (typeof markdown == 'object') {
         content = markdown.toHTML(val);
       } else if (typeof marked == 'function') {
         content = marked(val);
@@ -15425,6 +15429,12 @@ if (typeof jQuery === 'undefined') {
           content,
           callbackContent;
 
+      if (this.$isPreview == true) {
+        // Avoid sequenced element creation on missused scenario
+        // @see https://github.com/toopay/bootstrap-markdown/issues/170
+        return this;
+      }
+      
       // Give flag that tell the editor enter preview mode
       this.$isPreview = true;
       // Disable all buttons
@@ -15757,7 +15767,10 @@ if (typeof jQuery === 'undefined') {
       this.$options.onChange(this);
       return this;
     }
-
+  , select: function (e) {
+      this.$options.onSelect(this);
+      return this;
+    }
   , focus: function (e) {
       var options = this.$options,
           isHideable = options.hideable,
@@ -15802,7 +15815,7 @@ if (typeof jQuery === 'undefined') {
             // Build the original element
             var oldElement = $('<'+editable.type+'/>'),
                 content = this.getContent(),
-                currentContent = (typeof markdown == 'object') ? markdown.toHTML(content) : content;
+                currentContent = this.parseContent(content);
 
             $(editable.attrKeys).each(function(k,v) {
               oldElement.attr(editable.attrKeys[k],editable.attrValues[k]);
@@ -15846,13 +15859,14 @@ if (typeof jQuery === 'undefined') {
     /* Editor Properties */
     autofocus: false,
     hideable: false,
-    savable:false,
+    savable: false,
     width: 'inherit',
     height: 'inherit',
     resize: 'none',
     iconlibrary: 'glyph',
     language: 'en',
     initialstate: 'editor',
+    parser: null,
 
     /* Buttons Properties */
     buttons: [
@@ -16249,7 +16263,8 @@ if (typeof jQuery === 'undefined') {
     onBlur: function (e) {},
     onFocus: function (e) {},
     onChange: function(e) {},
-    onFullscreen: function(e) {}
+    onFullscreen: function(e) {},
+    onSelect: function (e) {}
   };
 
   $.fn.markdown.Constructor = Markdown;
@@ -16608,10 +16623,14 @@ dmf.registerModule('mailwrite', function(c, config) {
     function activateMarkdownEditor() {
         $("#message").markdown({
             autofocus: false,
-            savable: false
+            savable: false,
+            iconlibrary: 'fa',
+            hiddenButtons: ['cmdPreview','cmdCode','cmdQuote','cmdImage'],
+            fullscreen: {
+                enable: false
+            }
         })
     }
-
 
     return {
         start: start

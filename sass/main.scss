@@ -1,8 +1,10 @@
 @import 'vars/layout';
 @import 'vars/colours';
 @import 'vendor/bootstrap';
+@import 'vendor/bootstrap-markdown';
 @import 'vendor/animate';
 @import 'vendor/form';
+
 @import 'vendor/generics';
 @import 'vendor/lightbox';
 // @import 'vendor/icons';
@@ -22,6 +24,7 @@
 @import 'modules/content';
 @import 'modules/header';
 @import 'modules/login';
+@import 'modules/message_board';
 @import 'modules/register';
 @import 'modules/research';
 @import 'modules/sidebar';
