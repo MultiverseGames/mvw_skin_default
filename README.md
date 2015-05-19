@@ -17,5 +17,10 @@ The default skin for http://multiversewarriors.com/
  
  3. No Server Code
 	
-	This should not be possible regardless, but to be clear, any attempts to execute server side code will not be permitted. This restriction does not prohibit the use of, for example, AJAX requests utilizing functionality we have provided for that purpose, 
+	This should not be possible regardless, but to be clear, any attempts to execute server side code will not be permitted. This restriction does not prohibit the use of, for example, AJAX requests utilizing functionality we have provided for that purpose.
+
+##**Skin Recommendations**
+1. File Versioning
 	
+    Any resources used by a skin should contain version numbers in the filename. Using the default skin as an example, this means that say, production.js could instead be production.1.0.0.js. 
+    How you choose to determining version numbers is up to you, this is partially so that the administrative team can identify that your skin has changed, and primarily so that our player's browsers can properly cache these files, and grab new versions when needed.
