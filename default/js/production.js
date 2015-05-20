@@ -16335,7 +16335,9 @@ b=c.id,g=-p+"%",d=100+2*p+"%",d={position:"absolute",top:g,left:g,display:"block
 A(a,!1,!0)}else B&&(/ut|nd/.test(d)?(h[_remove](v),e[_remove](w)):(h[_add](v),e[_add](w)));if(_mobile)b.stopPropagation();else return!1}});a.on(_click+".i focus.i blur.i keyup.i keydown.i keypress.i",function(b){var d=b[_type];b=b.keyCode;if(d==_click)return!1;if("keydown"==d&&32==b)return c[_type]==r&&c[k]||(c[k]?q(a,k):x(a,k)),!1;if("keyup"==d&&c[_type]==r)!c[k]&&x(a,k);else if(/us|ur/.test(d))h["blur"==d?_remove:_add](s)});d.on(_click+" mousedown mouseup mouseover mouseout "+_touch,function(b){var d=
 b[_type],e=/wn|up/.test(d)?t:v;if(!c[n]){if(d==_click)A(a,!1,!0);else{if(/wn|er|in/.test(d))h[_add](e);else h[_remove](e+" "+t);if(z.length&&B&&e==v)z[/ut|nd/.test(d)?_remove:_add](w)}if(_mobile)b.stopPropagation();else return!1}})})}})(window.jQuery||window.Zepto);
 
-var dmf = function() {
+'use strict';
+
+var dmf = (function () {
     'use strict';
 
     var default_settings = {
@@ -16345,7 +16347,7 @@ var dmf = function() {
     return {
         config: {},
         data: {},
-        factories: null, // populated by factories.js 
+        factories: null, // populated by factories.js
         fn: null, // populated by functions.js
         events: {}, // used to map framework event-module bindings
         modules: {},
@@ -16354,42 +16356,46 @@ var dmf = function() {
          * Triggers starter logic for all game modules
          * @return {[type]} [description]
          */
-        activate: function(settings) {
-            this.settings = this.fn.extend({}, default_settings, settings);
+        activate: function activate(settings) {
+            dmf.settings = dmf.fn.extend({}, default_settings, settings);
 
             if (!settings.startup) {
                 return false;
             }
-            return this.startModule(settings.startup);
+            return dmf.startModule(settings.startup);
         },
-        registerModule: function(moduleID, creator) {
-            this.modules[moduleID] = {
+        registerModule: function registerModule(moduleID, creator) {
+            dmf.modules[moduleID] = {
                 create: creator,
-                config: this.config[moduleID],
+                config: dmf.config[moduleID],
                 instance: null
             };
         },
-        createModule: function() {
-            console.log('createModule is deprecated, use registerModule');
+        createModule: function createModule() {
+            dmf.announce('log', {
+                mgs: ['createModule is deprecated, use registerModule'],
+                severity: 2
+            });
         },
-        startModule: function(moduleID) {
-            var mod = this.modules[moduleID];
+        startModule: function startModule(moduleID) {
+            var mod = dmf.modules[moduleID];
 
             if (!mod) {
                 return false;
             }
 
-            var temp = mod.create(this, mod.config);
-            mod.instance = this.factories.module(temp);
+            var temp = mod.create(dmf, mod.config);
+            mod.instance = dmf.factories.module(temp);
 
             mod = mod.instance;
 
             if (mod.start) {
+                dmf.announce('module-started', moduleID);
                 mod.start();
             }
 
             if (mod.listeners) {
-                this.registerEvents(mod.listeners, moduleID);
+                dmf.registerEvents(mod.listeners, moduleID);
             }
 
             return mod;
@@ -16399,11 +16405,11 @@ var dmf = function() {
          * @param  {String[]} modules An array of the module ids to start
          * @return {[type]}         [description]
          */
-        startModules: function(modules) {
-            modules.forEach(this.startModule);
+        startModules: function startModules(modules) {
+            modules.forEach(dmf.startModule);
         },
-        stopModule: function(moduleID) {
-            var mod = this.modules[moduleID];
+        stopModule: function stopModule(moduleID) {
+            var mod = dmf.modules[moduleID];
 
             if (!mod) {
                 //module does not exist
@@ -16416,20 +16422,21 @@ var dmf = function() {
             mod = mod.instance;
 
             if (mod.listeners) {
-                this.deregisterEvents(mod.listeners, moduleID);
+                dmf.deregisterEvents(mod.listeners, moduleID);
             }
 
             // Modules do not require a destroy function, use it if exists
             if (mod.stop) {
+                dmf.announce('module-stopped', moduleID);
                 mod.stop();
             }
 
-            delete this.modules[moduleID].instance;
+            delete dmf.modules[moduleID].instance;
 
             return true;
         },
-        stopModules: function(modules) {
-            modules.forEach(this.stopModule, this);
+        stopModules: function stopModules(modules) {
+            modules.forEach(dmf.stopModule, dmf);
         },
         /**
          * Binds framework events to a module
@@ -16437,35 +16444,34 @@ var dmf = function() {
          * @param  {string} mod  [description]
          * @return {[type]}      [description]
          */
-        registerEvents: function(evts, moduleId) {
-            // Currently only called via startModule, so modules existance 
+        registerEvents: function registerEvents(evts, moduleId) {
+            // Currently only called via startModule, so modules existance
             // does not need to be validated here
 
             for (var eventKey in evts) {
                 // Add event to event list if not yet added
-                if (!this.events[eventKey]) {
-                    this.events[eventKey] = {};
+                if (!dmf.events[eventKey]) {
+                    dmf.events[eventKey] = {};
                 }
 
-                this.events[eventKey][moduleId] = evts[eventKey];
+                dmf.events[eventKey][moduleId] = evts[eventKey];
             }
-
         },
         /**
          * Unsubscribes a single module from a set of events
          */
-        deregisterEvents: function(evts, mod) {
+        deregisterEvents: function deregisterEvents(evts, mod) {
             for (var event in evts) {
-                delete this.events[event][mod];
+                delete dmf.events[event][mod];
             }
         },
         /**
          * Sends events to each listening module
          */
-        notify: function(event) {
+        announce: function announce(event) {
 
             if (arguments.length === 2) {
-                // Allows seperate name and data parameter, useful for primitive types data
+                // Allows seperate name and data parameter
                 event = {
                     type: arguments[0],
                     data: arguments[1]
@@ -16478,7 +16484,7 @@ var dmf = function() {
                 };
             }
 
-            var bindings = this.events[event.type];
+            var bindings = dmf.events[event.type];
 
             if (!bindings) {
                 return;
@@ -16488,17 +16494,24 @@ var dmf = function() {
             for (moduleId in bindings) {
                 bindings[moduleId](event.data);
             }
+        },
+        notify: function notify(event) {
+            dmf.announce.apply(this, arguments);
+            dmf.announce('log', {
+                msgs: ['Notify is deprecated, use dmf.announce'],
+                severity: 2
+            });
         }
     };
-}();
+})();
 
-(function() {
+(function () {
     'use strict';
     dmf.fn = {
-        is_arr: function(obj) {
-            return obj.constructor === Array;
+        is: function is(test, obj) {
+            return ({}).toString.call(obj) === test;
         },
-        extend: function() {
+        extend: function extend() {
             for (var i = 1; i < arguments.length; i++) {
                 for (var key in arguments[i]) {
                     if (arguments[i].hasOwnProperty(key)) {
@@ -16511,10 +16524,10 @@ var dmf = function() {
     };
 })();
 
-(function(c) {
+(function (c) {
     'use strict';
     c.factories = {
-        module: function(newModule) {
+        module: function module(newModule) {
 
             var defaults = {
                 start: false,
@@ -16526,6 +16539,56 @@ var dmf = function() {
         }
     };
 })(dmf);
+dmf.registerModule('dmf-logger', function(c) {
+    'use strict';
+
+    /*************************************************************************** 
+     ****************************  Framework Listeners *************************
+     **************************************************************************/
+
+    function log(data) {
+        var messages = data.msgs;
+        var severity = data.severity;
+
+        // If message is not an array, make it an array so we can traverse it
+        if (!c.fn.is('[object Array]', messages)) {
+            messages = [messages];
+        }
+
+        for (var i = 0; i < messages.length; i++) {
+            print(messages[i], severity);
+        }
+    }
+
+    function moduleStarted(data) {
+        print(data + ' module started', 1);
+    }
+
+    function moduleStopped(data) {
+        print(data + ' module stopped', 1);
+    }
+
+    /*************************************************************************** 
+     **************************** Private Methods ******************************
+     **************************************************************************/
+
+    function print(msg, severity) {
+        console[(severity === 1) ? 'log' : (severity === 2) ? 'warn' : 'error'](JSON.stringify(msg, null, 4));
+    }
+
+    /*************************************************************************** 
+     **************************** End Private Methods **************************
+     **************************************************************************/
+
+    /* Send setup data back to framework */
+    return {
+        listeners: {
+            'log': log,
+            'module-started': moduleStarted,
+            'module-stopped': moduleStopped
+        }
+    };
+});
 
 dmf.registerModule('all', function(c, config) {
     'use strict';
@@ -16634,9 +16697,12 @@ dmf.registerModule('name-of-module', function(c, config) {
     // Example stop function, will execute when module is stopped
     function stopFunction() {}
 
+    function someEventHandler(eventData) {}
 
     return { // setup options are optional, but an object must be returned
-        listeners: {}, // Can stay blank or be absent. Used for communicating between modules
+        listeners: {
+            'someEvent': someEventHandler
+        }, // Can stay blank or be absent. Used for communicating between modules
         start: startFunction, //include to have a function execute when the module starts
         stop: stopFunction //include to have a function execute when the module stops
     }
@@ -16646,24 +16712,22 @@ dmf.registerModule('launcher', function(c, config) {
     'use strict';
 
     function initialize() {
-        var page = getPage();
+
+        //Events are normally returned at the end and registered automatically, but we need this 
+        //before we start the page-detector module
+        c.registerEvents({
+            'page-detected': startPageModule
+        }, 'launcher');
 
         // Start any generic modules needed by all pages here
-        c.startModule('all');
-
-        // Start module specific to this page.
-        // If this pages needs multiple modules, first module should start them
-        c.startModule(page);
+        c.startModules(['dmf-logger', 'all', 'page-detector']);
     }
 
     /************* General Functions ******************************************/
 
-    /**
-     * Get the current page
-     * @returns String - name of page file, not including extension
-     */
-    function getPage() {
-        return location.pathname.substring(1).split('.')[0];
+    function startPageModule(page) {
+        // Start module responsible for the detected page
+        c.startModule(page);
     }
 
     return {
@@ -16693,6 +16757,46 @@ dmf.registerModule('mailwrite', function(c, config) {
 
     return {
         start: start
+    };
+
+});
+
+dmf.registerModule('operations', function(c, config) {
+    'use strict';
+
+    function start() {
+
+    }
+
+    return {
+        start: start
+    };
+
+});
+
+dmf.registerModule('page-detector', function(c, config) {
+    'use strict';
+
+    function initialize() {
+        var page = getPage();
+        c.announce('page-detected', page);
+    }
+
+    /************* General Functions ******************************************/
+
+    /**
+     * Get the current page
+     * @returns String - name of page file, not including extension
+     */
+    function getPage() {
+        var fullpath = location.pathname.substring(1).split('.')[0];
+        var subpath = fullpath.split('/');
+
+        return subpath.pop();
+    }
+
+    return {
+        start: initialize
     };
 
 });
