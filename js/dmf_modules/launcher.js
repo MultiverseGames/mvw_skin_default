@@ -2,24 +2,22 @@ dmf.registerModule('launcher', function(c, config) {
     'use strict';
 
     function initialize() {
-        var page = getPage();
+
+        //Events are normally returned at the end and registered automatically, but we need this 
+        //before we start the page-detector module
+        c.registerEvents({
+            'page-detected': startPageModule
+        }, 'launcher');
 
         // Start any generic modules needed by all pages here
-        c.startModule('all');
-
-        // Start module specific to this page.
-        // If this pages needs multiple modules, first module should start them
-        c.startModule(page);
+        c.startModules(['dmf-logger', 'all', 'page-detector']);
     }
 
     /************* General Functions ******************************************/
 
-    /**
-     * Get the current page
-     * @returns String - name of page file, not including extension
-     */
-    function getPage() {
-        return location.pathname.substring(1).split('.')[0];
+    function startPageModule(page) {
+        // Start module responsible for the detected page
+        c.startModule(page);
     }
 
     return {
