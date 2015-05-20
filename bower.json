@@ -1,6 +1,6 @@
 {
   "name": "mvw_skin_default",
-  "version": "0.0.113",
+  "version": "0.0.130",
   "homepage": "https://github.com/MultiverseGames/mvw_skin_default",
   "authors": [
     "DWMiller <david.miller8@mohawkcollege.ca>"
@@ -19,6 +19,7 @@
     "fontawesome": "~4.3.0",
     "jquery-sticky": "~1.0.1",
     "dmf": "git://github.com/DWMiller/dmf.git",
+    "dmf_module_collection": "git://github.com/DWMiller/dmf-module-collection.git",
     "bootstrap-markdown": "~2.9.0",
     "jquery.nicescroll": "~3.5.6",
     "open-sans-fontface": "~1.4.0",

@@ -8,6 +8,7 @@ module.exports = {
             'libs/bootstrap-markdown/js/bootstrap-markdown.js',
             'libs/iCheck/icheck.min.js',
             'libs/dmf/dist/dmf.js',
+            'bower_components/dmf_module_collection/logger/logger.js',
             'js/dmf_modules/**/*.js',
             'js/functions.js'
         ],
