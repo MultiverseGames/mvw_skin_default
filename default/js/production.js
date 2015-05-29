@@ -16604,7 +16604,10 @@ dmf.registerModule('all', function(c, config) {
     };
 
     function tooltips() {
-        $('.tooltips').tooltip();
+        $('.tooltips').tooltip({
+            html: true,
+            placement: "auto"
+        });
     }
 
     function sidebarAndMenu() {
