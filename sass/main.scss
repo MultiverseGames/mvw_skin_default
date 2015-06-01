@@ -7,7 +7,6 @@
 
 @import 'vendor/generics';
 @import 'vendor/lightbox';
-// @import 'vendor/icons';
 
 @import 'bower_components/open-sans-fontface/sass/open-sans';
 @import 'bower_components/fontawesome/scss/font-awesome';
@@ -29,6 +28,7 @@
 @import 'modules/research';
 @import 'modules/sidebar';
 @import 'modules/covert_reports';
+@import 'modules/universe';
 /*Components*/
 @import 'components/alerts';
 @import 'components/badge';
@@ -46,162 +46,3 @@
 @import 'components/tile';
 //Process this file into little bits
 //@import 'globals/common_styles-cleaned';
-
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-.main-wrapper {
-  min-height: 100%;
-  position: relative;
-}
-
-.main-content {
-  padding-bottom: 55px; /* Height of the footer element */
-}
-
-.page-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 55px; /* Height of the footer element */
-  text-align: center;
-  background: rgba(0, 0, 0, 0.45);
-}
-
-.side-menu .menu-item {
-  font-size: 125%;
-  line-height: 2;
-}
-
-.menu-item li > a {
-  min-height: 44px;
-}
-
-.block-title.initial {
-  font-size: initial;
-}
-
-
-.box.active {
-  display: block;
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
-}
-
-
-[class="form-type-"] {
-  position: absolute;
-  top: 50%;
-}
-
-.form-control {
-  background: rgba(255, 255, 255, 0.05)
-}
-
-.form-control:focus {
-  background: rgba(255, 255, 255, 0.1)
-}
-
-
-/* Override Bootstrap table styles */
-.table > tbody > tr > td {
-  vertical-align: middle;
-}
-
-/* Extend Bootstrap panel styles */
-.panel-body.compressed {
-  padding: 0 15px; /* removes top/bottom padding */
-}
-
-/******************************* END BUTTONS **********************************/
-
-/******* Overly specific stuff to refactor into something more generic ********/
-
-
-.mv-upgrade, .research-item {
-  transition: width 0.25s;
-}
-
-.nav-tabs > li > a {
-  padding: 1em;
-  font-size: larger;
-}
-
-.upgrade-cost, .upgrade-limit {
-  margin-bottom: 1em;
-}
-
-.upgrade-cost span, .upgrade-limit span {
-  /*display: block;*/
-  margin-right: 0.5em;
-}
-
-.upgrade-info {
-  /*padding: 0.5em;*/
-  min-height: 105px;
-}
-
-
-/* Make the bold numbers in the upkeep panel bigger to stand out more*/
-#upkeep .panel-body strong {
-  font-size: 115%;
-  font-family: Verdana, sans-serif;
-}
-
-.page-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.news-item.new div {
-  background-color: rgba(0, 0, 255, 0.05);
-}
-
-.relation-protection {
-  background-color: rgba(0, 0, 255, 0.05);
-}
-
-.relation-neutral {
-
-}
-
-.relation-peace {
-  background-color: rgba(0, 255, 0, 0.05);
-}
-
-.relation-war {
-  background-color: rgba(255, 0, 0, 0.05);
-}
-
-.break-word {
-  word-wrap: break-word;
-}
-
-#thread-list .new, .unviewed {
-  /*background: rgba(255, 255, 255, 0.05);*/
-  background: rgba(0, 0, 255, 0.15);
-}
-
-.thread-post.post-own {
-  color: rgb(3, 255, 238);
-}
-
-.universe-quickaction {
-  min-width: 50px
-}
-
-#playerattacks .panel-body {
-  min-height: 135px; /* Give attack panels minimum height to ensure even layout*/
-}
-
-/* Some generic colour coding options*/
-.success {
-  color: #00FF00;
-}
-
-.danger {
-  color: #FF0000
-}

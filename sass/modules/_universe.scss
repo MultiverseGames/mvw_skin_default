@@ -1,0 +1,9 @@
+@media only screen and (min-width: $lg-brkp) {
+    #universe-search {
+        position: relative;
+    }
+    #universe-search > div {
+        position: fixed;
+    }
+}
+
