@@ -12595,7 +12595,7 @@ body {
   
 @media (min-width: 768px) {
 .page-footer {
-  /*position: absolute;*/
+  position: relative;
   bottom: 0;
   left: 0;
   width: 100%;
