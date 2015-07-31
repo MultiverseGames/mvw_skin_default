@@ -3,19 +3,19 @@ module.exports = {
         files: [
             {
             	expand: true,
-            	cwd:'libs/fontawesome/fonts/',
+            	cwd:'bower_components/fontawesome/fonts/',
                 src: ['**'],
                 dest: 'default/fonts/'
             },
             {
             	expand: true,
-            	cwd:'libs/open-sans-fontface/fonts/',
+            	cwd:'bower_components/open-sans-fontface/fonts/',
                 src: ['**'],
                 dest: 'default/css/fonts/'
             },     
             {
             	expand: true,
-            	cwd:'libs/bootstrap/dist/fonts/',
+            	cwd:'bower_components/bootstrap/dist/fonts/',
                 src: ['**'],
                 dest: 'default/fonts/'
             },  
