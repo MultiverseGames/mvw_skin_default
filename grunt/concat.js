@@ -19,4 +19,4 @@ module.exports = {
         ],
         dest: 'default/js/production.js'
     }
-}
+};

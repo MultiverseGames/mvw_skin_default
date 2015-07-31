@@ -21,7 +21,7 @@ module.exports = {
             },  
             {
                 expand: true,
-                src: ['img/**', 'before.html', 'after.html', 'js/countDown.js'],
+                src: ['img/**', 'js/countDown.js'],
                 dest: 'default/'
             }
         ]

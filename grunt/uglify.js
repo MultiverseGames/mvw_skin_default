@@ -6,8 +6,8 @@ module.exports = {
     },
     dist: {
         files: {
-            'default/js/production.min.js': ['default/js/production.js'],
-            'default/js/libs.min.js': ['default/js/libs.js']
+            'default/js/production.<%= grunt.pkg.version %>.min.js': ['default/js/production.js'],
+            'default/js/libs.<%= grunt.pkg.version %>.min.js': ['default/js/libs.js']
         }
     }
 }

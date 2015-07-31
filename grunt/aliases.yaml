@@ -1,20 +1,24 @@
 default:
-  - 'version'
+  - 'clean:prod'
   - 'concurrent:first'
   - 'concurrent:last'
-build_prod:
-  - 'version'
-  - 'concurrent:first'
-  - 'concurrent:last'
+  - 'string-replace:prod'
+  - 'version:patch'
+build:
+  - 'default'
 build_dev:
-  - 'version'
   - 'concurrent:first'
+  - 'string-replace:dev'
+  - 'version:patch'
 build_css:
-  - 'version'
   - 'sass'
+  - 'string-replace:dev'
+  - 'version:patch'
 build_js:
-  - 'version'
   - 'concat:js_src'
+  - 'string-replace:dev'
+  - 'version:patch'
 build_libs:
-  - 'version'
   - 'concat:js_libs'
+  - 'string-replace:dev'
+  - 'version:patch'
