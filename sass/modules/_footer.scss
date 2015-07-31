@@ -1,0 +1,29 @@
+/** Will always apply unless overridden below */
+
+.page-footer {
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    font-size: 1.1em;
+}
+
+
+/** Stuff to apply on medium screens and smaller */
+
+@media (max-width: $md-brkp) {
+    .page-footer {}
+}
+
+
+/** Stuff to apply on medium screens and larger */
+
+@media (min-width: $md-brkp) {
+    .page-footer {
+        clear: both;
+        position: static;
+        bottom: 0;
+        left: 0;
+        height: 250px;
+        /* Height of the footer element */
+    }
+}
