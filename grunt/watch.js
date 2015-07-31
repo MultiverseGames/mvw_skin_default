@@ -1,19 +1,15 @@
 module.exports = {
-    bower: {
-        files: ['libs/**/*'],
-        tasks: ['dev']        
-    },
     js: {
         files: ['js/**/*'],
-        tasks: ['newer:concat','version']
+        tasks: ['build_js_src']
     },
     sass: {
         files: ['sass/**/*'],
-        tasks: ['sass','version']
+        tasks: ['build_css']
     },
     html: {
         files: ['before.html','after.html','img/**/*'],
-        tasks: ['newer:copy']
+        tasks: ['newer:copy','version']
     },    
     grunt: {
         files: ['grunt/**/*'],

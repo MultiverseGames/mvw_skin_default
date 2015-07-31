@@ -1,5 +1,4 @@
 module.exports = {
-    first: ['version'],
-    second: ['sass','concat','newer:copy'],
-    third: ['cssmin', 'uglify']
+    first: ['sass','concat:js_src','concat:js_libs','newer:copy'],
+    last: ['cssmin', 'uglify']
 };

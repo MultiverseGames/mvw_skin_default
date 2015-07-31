@@ -1,5 +1,5 @@
 module.exports = {
-    js: {
+    js_libs: {
         src: [
             'bower_components/jquery/dist/jquery.js',
             'bower_components/bootstrap/dist/js/bootstrap.js',
@@ -8,7 +8,12 @@ module.exports = {
             'bower_components/bootstrap-markdown/js/bootstrap-markdown.js',
             'bower_components/iCheck/icheck.js',
             'bower_components/dmf/dist/dmf.js',
-            'bower_components/dmf_module_collection/logger/logger.js',
+            'bower_components/dmf_module_collection/logger/logger.js'
+        ],
+        dest: 'default/js/libs.js'
+    },
+    js_src: {
+        src: [
             'js/dmf_modules/**/*.js',
             'js/functions.js'
         ],

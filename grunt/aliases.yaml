@@ -1,7 +1,20 @@
 default:
+  - 'version'
   - 'concurrent:first'
-  - 'concurrent:second'
-  - 'concurrent:third'
-dev:
+  - 'concurrent:last'
+build_prod:
+  - 'version'
   - 'concurrent:first'
-  - 'concurrent:second'
+  - 'concurrent:last'
+build_dev:
+  - 'version'
+  - 'concurrent:first'
+build_css:
+  - 'version'
+  - 'sass'
+build_js:
+  - 'version'
+  - 'concat:js_src'
+build_libs:
+  - 'version'
+  - 'concat:js_libs'
