@@ -1,74 +1,85 @@
-dmf.registerModule('all', function(c, config) {
+dmf.registerModule('all', function(c) {
     'use strict';
 
+    var elements = {};
+
     function start() {
-        tooltips();
-        sidebarAndMenu();
-        topbar();
+
+        elements = c.fn.extend({}, elements, getElements());
+
+        setUIHandlers();
+
+        activateTooltips();
     }
 
     return {
         start: start
     };
 
-    function tooltips() {
+    function getElements() {
+        return {
+            $body: $('body'),
+            $drawers: $('.drawer'),
+            $html: $('html'),
+            $menuToggle: $('#menu-toggle'),
+            $pageContent: $('#content-page'),
+            $sidebar: $('#sidebar')
+        }
+    }
+
+    function setUIHandlers() {
+        elements.$menuToggle.on('click touchstart', toggleSideMenu);
+
+        elements.$sidebar.find('.menu-item').hover(menuDropdownHoverOn, menuDropdownHoverOff);
+
+        elements.$body.on('click touchstart', '.drawer-toggle', toggleDrawer);
+
+        elements.$pageContent.on('mouseup touchstart', contentClick);
+    }
+
+    function activateTooltips() {
         $('.tooltips').tooltip({
             html: true,
             placement: "auto"
         });
     }
 
-    function sidebarAndMenu() {
-        /* Menu Toggle */
-        $('body').on('click touchstart', '#menu-toggle', function(e) {
-            e.preventDefault();
-            $('html').toggleClass('menu-active');
-            $('#sidebar').toggleClass('toggled');
-            //$('#content').toggleClass('m-0');
-        });
-
-        /* Active Menu */
-        $('#sidebar .menu-item').hover(function() {
-            $(this).closest('.dropdown').addClass('hovered');
-        }, function() {
-            $(this).closest('.dropdown').removeClass('hovered');
-        });
-
-        /* Prevent */
-        $('.side-menu .dropdown > a').click(function(e) {
-            e.preventDefault();
-        });
-
+    function contentClick() {
+        //Improve so doesn't try to close drawers when none are open
+        hideDrawers();
     }
 
-    function topbar() {
-        $('body').on('click touchstart', '.drawer-toggle', function(e) {
-            e.preventDefault();
-            var drawer = $(this).attr('data-drawer');
-
-            $('.drawer:not("#' + drawer + '")').removeClass('toggled');
-
-            if ($('#' + drawer).hasClass('toggled')) {
-                $('#' + drawer).removeClass('toggled');
-            } else {
-                $('#' + drawer).addClass('toggled');
-            }
-        });
-
-        //Close when click outside
-        $(document).on('mouseup touchstart', function(e) {
-            var container = $('.drawer, .tm-icon');
-            if (container.has(e.target).length === 0) {
-                $('.drawer').removeClass('toggled');
-                $('.drawer-toggle').removeClass('open');
-            }
-        });
-
-        //Close
-        $('body').on('click touchstart', '.drawer-close', function() {
-            $(this).closest('.drawer').removeClass('toggled');
-            $('.drawer-toggle').removeClass('open');
-        });
+    function toggleSideMenu(e) {
+        e.preventDefault();
+        elements.$html.toggleClass('menu-active');
+        elements.$sidebar.toggleClass('toggled');
     }
 
+    /**
+     * Adds hovered class to the menu icon of parent drop down
+     * Used to keep icon 'highlighted' when hovering on child elements
+     */
+    function menuDropdownHoverOn(e) {
+        $(this).closest('.dropdown').addClass('hovered');
+    }
+
+    function menuDropdownHoverOff(e) {
+        $(this).closest('.dropdown').removeClass('hovered');
+    }
+
+    function toggleDrawer(e) {
+        e.preventDefault();
+
+        var drawerID = $(this).data('drawer');
+
+        var $drawer = $('#' + drawerID);
+
+        $('.drawer').not($drawer).removeClass('toggled');
+
+        $drawer.toggleClass('toggled');
+    }
+
+    function hideDrawers() {
+        elements.$drawers.removeClass('toggled');
+    }
 });
