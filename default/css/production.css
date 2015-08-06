@@ -12509,6 +12509,9 @@ img {
   width: auto;
   padding: 0; }
 
+.jumbotron {
+  margin-bottom: 0; }
+
 .row {
   margin-left: -7px;
   margin-right: -7px; }
