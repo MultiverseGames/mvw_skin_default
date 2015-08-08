@@ -1,3 +1,54 @@
+/* --------------------------------------------------------
+    Buttons
+-----------------------------------------------------------*/
+
 .btn:not(.form-control) {
+  transition: all 0.5s;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 1) 100%);
   border: 1px dotted #595959;
+  opacity: 0.8 ;
+  color: #fff;
+}
+
+.btn-alt {
+  background: none !important;
+  filter: none !important
+}
+
+.btn:hover, .open .btn.dropdown-toggle {
+  background-image: -webkit-linear-gradient(90deg, rgba(0, 0, 0, 0.298039) 0%, rgb(0, 0, 0) 100%);
+  background-image: -moz-linear-gradient(90deg, rgba(0, 0, 0, 0.298039) 0%, rgb(0, 0, 0) 100%);
+  background-image: -o-linear-gradient(90deg, rgba(0, 0, 0, 0.298039) 0%, rgb(0, 0, 0) 100%);
+  background-image: -ms-linear-gradient(90deg, rgba(0, 0, 0, 0.298039) 0%, rgb(0, 0, 0) 100%);
+
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.7);
+  opacity: 1 !important;
+  color: #fff;
+}
+
+.btn:not(.form-control):active, .btn:not(.form-control).active, .open .btn.dropdown-toggle:not(.form-control) {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.btn-sm {
+  padding: 4px 10px 6px;
+}
+
+.btn-xs {
+  padding: 3px 7px;
+  font-size: 10px;
+}
+
+.btn-alt {
+  background: rgba(0, 0, 0, 0) !important;
+  border: 1px solid rgba(255, 255, 255, 0.31) !important;
+}
+
+.btn-alt:hover {
+  background: rgba(255, 255, 255, 0.39) !important;
+  color: #000;
+}
+
+.btn .caret {
+  border-top-color: rgba(255, 255, 255, 0.6);
 }

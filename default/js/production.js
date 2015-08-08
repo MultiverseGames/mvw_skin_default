@@ -402,41 +402,6 @@ $(document).ready(function() {
         }
     })();
 
-    /* --------------------------------------------------------
-    Input Slider
-    -----------------------------------------------------------*/
-    (function() {
-        if ($('.input-slider')[0]) {
-            $('.input-slider').slider().on('slide', function(ev) {
-                $(this).closest('.slider-container').find('.slider-value').val(ev.value);
-            });
-        }
-    })();
-
-    /* ---------------------------
-    Image Popup [Pirobox]
-    --------------------------- */
-    (function() {
-        if ($('.pirobox_gall')[0]) {
-            //Fix IE
-            jQuery.browser = {};
-            (function() {
-                jQuery.browser.msie = false;
-                jQuery.browser.version = 0;
-                if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
-                    jQuery.browser.msie = true;
-                    jQuery.browser.version = RegExp.$1;
-                }
-            })();
-
-            //Lightbox
-            $().piroBox_ext({
-                piro_speed: 700,
-                bg_alpha: 0.5,
-                piro_scroll: true // pirobox always positioned at the center of the page
-            });
-        }
-    })();
 
     /* ---------------------------
     Vertical tab
@@ -574,3 +539,5 @@ $(window).load(function() {
     });
 
 });
+
+//# sourceMappingURL=production.js.map

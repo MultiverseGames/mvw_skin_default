@@ -1,11 +1,11 @@
 module.exports = {
     js: {
         files: ['js/**/*'],
-        tasks: ['build_js_src']
+        tasks: ['js_src']
     },
     sass: {
-        files: ['sass/**/*'],
-        tasks: ['build_css']
+        files: ['sass/**/*.scss'],
+        tasks: ['css']
     },
     html: {
         files: ['before.html','after.html','img/**/*'],

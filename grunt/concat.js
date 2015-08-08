@@ -1,4 +1,7 @@
 module.exports = {
+    options: {
+        sourceMap: true
+    },
     js_libs: {
         src: [
             'bower_components/jquery/dist/jquery.js',

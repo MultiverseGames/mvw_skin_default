@@ -1,11 +1,6 @@
 /** Stuff to apply on medium screens and smaller */
-@media (max-width: $md-brkp) {
-  /* Bootstrap stacks justified tabs on small screens, we instead want to just override the justified part */
-  /*.nav-tabs.nav-justified > li {*/
-  /*display: inline-block;*/
-  /*width: auto;*/
-  /*border: none;*/
-  /*}*/
+@media (max-width: $md-brkp-max) {
+
   body {
     background-image: $mobileBg;
     background-color: #40404E;

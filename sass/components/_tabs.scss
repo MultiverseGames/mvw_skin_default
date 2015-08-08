@@ -1,8 +1,7 @@
-
 /* Tabs */
 .nav-tabs {
-  background: rgba(0,0,0,0.35);
-  border-bottom-color: rgba(0,0,0,0.0);
+  background: rgba(0, 0, 0, 0.35);
+  border-bottom-color: rgba(0, 0, 0, 0.0);
 }
 
 .tab-content {
@@ -14,18 +13,19 @@
 }
 
 .nav > li > a:hover, .nav > li > a:focus {
-  background: rgba(0,0,0,0.15);
+  background: rgba(0, 0, 0, 0.15);
   border-color: transparent;
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   border-color: transparent;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0, 0, 0, 0.35);
   color: #fff;
 }
 
 .nav-tabs > li > a {
-  padding: 5px 10px 6px;
+  padding: 1em;
+  font-size: larger;
   margin-right: 0;
   display: inline-block;
   width: 100%;
@@ -39,7 +39,7 @@
 .tab-vertical > li {
   float: none;
   margin-bottom: 0;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .tab-vertical > li:last-child {

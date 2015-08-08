@@ -6,15 +6,15 @@ default:
   - 'version:patch'
 build:
   - 'default'
-build_dev:
+dev:
   - 'concurrent:first'
   - 'string-replace:dev'
   - 'version:patch'
-build_css:
+css:
   - 'sass'
   - 'string-replace:dev'
   - 'version:patch'
-build_js_src:
+js_src:
   - 'concat:js_src'
   - 'string-replace:dev'
   - 'version:patch'

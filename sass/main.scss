@@ -1,16 +1,8 @@
 @import 'vars/layout';
-@import 'vars/colours';
-@import 'vendor/bootstrap';
-@import 'vendor/bootstrap-markdown';
-@import 'vendor/animate';
-@import 'vendor/form';
-
-@import 'vendor/generics';
-@import 'vendor/lightbox';
-
+@import 'vars/theme';
+@import 'vendor/bootstrap-custom';
 @import 'bower_components/open-sans-fontface/sass/open-sans';
 @import 'bower_components/fontawesome/scss/font-awesome';
-
 /*Globals*/
 @import 'globals/z-index';
 @import 'globals/fonts';
@@ -19,10 +11,14 @@
 @import 'globals/smallSize';
 @import 'globals/mediumSize';
 @import 'globals/largeSize';
+/* Random utility styles to be directly applied to elements for specific effects */
+@import 'utility/animations';
+@import 'utility/generics';
 /*Modules*/
 @import 'modules/content';
 @import 'modules/footer';
-@import 'modules/header';
+@import 'modules/header/header';
+@import 'modules/header/notifications';
 @import 'modules/login';
 @import 'modules/message_board';
 @import 'modules/register';
@@ -30,20 +26,27 @@
 @import 'modules/sidebar';
 @import 'modules/covert_reports';
 @import 'modules/universe';
+@import 'modules/upkeep';
 /*Components*/
+@import 'components/accordion';
 @import 'components/alerts';
 @import 'components/badge';
 @import 'components/buttons';
-
+@import 'components/block-title';
 @import 'components/dropdown';
-//@import 'components/modal';
+@import 'components/form';
+@import 'components/grid';
+@import 'components/headers';
+@import 'components/jumbotron';
+@import 'components/links';
 @import 'components/listgroup';
 @import 'components/lists';
-//@import 'components/listview';
+@import 'components/markdown-editor';
 @import 'components/panels';
+@import 'components/page-header';
+@import 'components/page-title';
 @import 'components/progress_bar';
 @import 'components/tables';
 @import 'components/tabs';
 @import 'components/tile';
-//Process this file into little bits
-//@import 'globals/common_styles-cleaned';
+@import 'components/well';

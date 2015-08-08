@@ -1,391 +1,151 @@
 // This file is a mess of the remnants of old template stuff, needs to be organized
 ::selection {
-    background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 ::-moz-selection {
-    background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 * {
-    border-radius: 0 !important;
-    box-shadow: none;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-}
-
-*:focus,
-*:active {
-    outline: none !important;
+  transition: all 300ms;
 }
 
 html {
-    overflow-x: hidden;
-    -ms-overflow-style: scrollbar;
+  overflow-x: hidden;
 }
 
 html,
 body {
-    background-attachment: fixed;
-    height: 100%;
-    // Fonts must be in at least body to override bootstrap defaults.
-    font-family: 'Open Sans', sans-serif;
-    font-size: 12px;
-    font-weight: lighter;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  // Fonts must be in at least body to override bootstrap defaults.
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: lighter;
+  color: #fff;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
 }
 
-#sidebar,
-#top-menu .tm-icon,
-#top-menu .tm-icon span,
-.side-menu li .shortcut img,
-.drawer,
-.shortcut,
-.chat-list,
-.btn-alt,
-.profile-menu > li i {
-    -webkit-transition: all 300ms;
-    -moz-transition: all 300ms;
-    -o-transition: all 300ms;
-    -ms-transition: all 300ms;
-    transition: all 300ms;
-}
 
-.page-title {
-    padding: 8px 15px 9px;
-    font-size: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    margin: 0;
-}
 
-.block-title {
-    background: rgba(0, 0, 0, 0.3);
-    font-size: 12px;
-    text-transform: uppercase;
-    padding: 5px 10px 5px;
-    display: inline-block;
-    letter-spacing: 0.5px;
-}
+
+
 /* HR */
 
 hr {
-    margin: 0;
-    float: left;
-    width: 100%;
+  margin: 0;
+  float: left;
+  width: 100%;
 }
 
-.n-count {
-    background: #F00000;
-    font-size: 11px;
-    position: absolute;
-    text-align: center;
-    padding: 2px 3px 3px;
-    border-radius: 2px !important;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.06);
-    margin: 7px 0 0 -13px;
-    font-style: normal;
-    line-height: 100%;
-    -webkit-animation-name: bounceIn;
-    animation-name: bounceIn;
-    font-family: open-sans-regular;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-}
-
-body,
-button,
-input,
-textarea,
-select,
-.btn {
-    -webkit-font-smoothing: antialiased;
-}
-
-body,
-a,
-input,
-.help-block {
-    color: #fff;
-    text-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'open-sans-light', sans-serif;
-    font-weight: normal;
-}
-
-h1,
-h2,
-h3 {
-    margin-top: 10px;
-}
-
-h1 small,
-h2 small,
-h3 small,
-h1 .small,
-h2 .small,
-h3 .small {
-    font-size: 60%;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-a:hover,
-a:focus {
-    color: #FFD600;
-    text-decoration: none;
-}
-
-a.underline {
-    border-bottom: 1px dotted rgba(255, 255, 255, 0.35);
-}
-
-a.underline:hover,
-a.underline:focus {
-    border-color: #FFD600;
-}
 
 small {
-    color: #fff;
+  color: #fff;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
-.d-inline-block {
-    display: inline-block;
-}
+
 /* --------------------------------------------------------
     Bootstrap Overrides
 -----------------------------------------------------------*/
 
 .container {
-    width: auto;
-    padding: 0;
-}
-
-.row {
-    margin-left: -7px;
-    margin-right: -7px;
-}
-
-.col-xs-1,
-.col-sm-1,
-.col-md-1,
-.col-lg-1,
-.col-xs-2,
-.col-sm-2,
-.col-md-2,
-.col-lg-2,
-.col-xs-3,
-.col-sm-3,
-.col-md-3,
-.col-lg-3,
-.col-xs-4,
-.col-sm-4,
-.col-md-4,
-.col-lg-4,
-.col-xs-5,
-.col-sm-5,
-.col-md-5,
-.col-lg-5,
-.col-xs-6,
-.col-sm-6,
-.col-md-6,
-.col-lg-6,
-.col-xs-7,
-.col-sm-7,
-.col-md-7,
-.col-lg-7,
-.col-xs-8,
-.col-sm-8,
-.col-md-8,
-.col-lg-8,
-.col-xs-9,
-.col-sm-9,
-.col-md-9,
-.col-lg-9,
-.col-xs-10,
-.col-sm-10,
-.col-md-10,
-.col-lg-10,
-.col-xs-11,
-.col-sm-11,
-.col-md-11,
-.col-lg-11,
-.col-xs-12,
-.col-sm-12,
-.col-md-12,
-.col-lg-12 {
-    padding-left: 7px;
-    padding-right: 7px;
-}
-
-.well {
-    border: 0;
-}
-
-.no-gutter > [class*='col-'] {
-    padding-right: 0;
-    padding-left: 0;
+  width: auto;
+  padding: 0;
 }
 
 .even-spaced {
-    letter-spacing: 1px;
-    font-family: "Lucida Console", Monaco, monospace;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+  letter-spacing: 1px;
+  font-family: "Lucida Console", Monaco, monospace;
 }
 
 .main-wrapper {
-    min-height: 100%;
-    overflow: hidden;
-    position: relative;
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 .main-content {
-    padding-bottom: 55px;
-    /* Height of the footer element */
+  padding-bottom: 55px;
+  /* Height of the footer element */
 }
 
 .side-menu .menu-item {
-    font-size: 125%;
-    line-height: 2;
+  font-size: 125%;
+  line-height: 2;
 }
 
 .menu-item li > a {
-    min-height: 44px;
-}
-
-.block-title.initial {
-    font-size: initial;
+  min-height: 44px;
 }
 
 .box.active {
-    display: block;
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
+  display: block;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
 }
 
-[class="form-type-"] {
-    position: absolute;
-    top: 50%;
-}
-
-.form-control {
-    background: rgba(255, 255, 255, 0.05)
-}
-
-.form-control:focus {
-    background: rgba(255, 255, 255, 0.1)
-}
-/* Override Bootstrap table styles */
-
-.table > tbody > tr > td {
-    vertical-align: middle;
-}
-/* Extend Bootstrap panel styles */
-
-.panel-body.compressed {
-    padding: 0 15px;
-    /* removes top/bottom padding */
-}
 /******************************* END BUTTONS **********************************/
 /******* Overly specific stuff to refactor into something more generic ********/
 
 .mv-upgrade,
 .research-item {
-    transition: width 0.25s;
-}
-
-.nav-tabs > li > a {
-    padding: 1em;
-    font-size: larger;
+  transition: width 0.25s;
 }
 
 .upgrade-cost,
 .upgrade-limit {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .upgrade-cost span,
 .upgrade-limit span {
-    /*display: block;*/
-    
-    margin-right: 0.5em;
+  /*display: block;*/
+
+  margin-right: 0.5em;
 }
 
 .upgrade-info {
-    /*padding: 0.5em;*/
-    
-    min-height: 105px;
-}
-/* Make the bold numbers in the upkeep panel bigger to stand out more*/
+  /*padding: 0.5em;*/
 
-#upkeep .panel-body strong {
-    font-size: 115%;
-    font-family: Verdana, sans-serif;
-}
-
-.page-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  min-height: 105px;
 }
 
 .news-item.new div {
-    background-color: rgba(0, 0, 255, 0.05);
+  background-color: rgba(0, 0, 255, 0.05);
 }
 
 .relation-protection {
-    background-color: rgba(0, 0, 255, 0.05);
+  background-color: rgba(0, 0, 255, 0.05);
 }
 
-.relation-neutral {}
+.relation-neutral {
+}
 
 .relation-peace {
-    background-color: rgba(0, 255, 0, 0.05);
+  background-color: rgba(0, 255, 0, 0.05);
 }
 
 .relation-war {
-    background-color: rgba(255, 0, 0, 0.05);
+  background-color: rgba(255, 0, 0, 0.05);
 }
 
 .break-word {
-    word-wrap: break-word;
+  word-wrap: break-word;
 }
 
-#thread-list .new,
-.unviewed {
-    /*background: rgba(255, 255, 255, 0.05);*/
-    
-    background: rgba(0, 0, 255, 0.15);
-}
-
-.thread-post.post-own {
-    color: rgb(3, 255, 238);
-}
-
-.universe-quickaction {
-    min-width: 50px
-}
-
-#playerattacks .panel-body {
-    min-height: 135px;
-    /* Give attack panels minimum height to ensure even layout*/
-}
 /* Some generic colour coding options*/
 
 .success {
-    color: #00FF00;
+  color: #00FF00;
 }
 
 .danger {
-    color: #FF0000
+  color: #FF0000
 }

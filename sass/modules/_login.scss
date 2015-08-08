@@ -26,10 +26,9 @@
   border: 0;
   padding: 7px 10px;
   background: rgba(0, 0, 0, 0.35);
-  border-radius: 2px 0px 0px 2px !important;
 }
 
-@media (max-width: 780px) {
+@media (max-width: $sm-brkp-max) {
   #login {
     padding: 30px 15px;
   }
@@ -40,7 +39,7 @@
   }
 }
 
-@media (min-width: 780px) {
+@media (min-width: $sm-brkp) {
   /* Login */
   #login {
     padding: 30px;

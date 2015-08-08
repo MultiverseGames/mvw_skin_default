@@ -37,3 +37,7 @@
 .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
   background: rgba(0,0,0,0.2);
 }
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
