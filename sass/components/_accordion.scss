@@ -1,0 +1,15 @@
+//Add the up/down carats to accordions to indicate oopen or closed state
+.accordion .panel-heading .panel-title a:after, .accordion .panel-heading .panel-title a.active:after {
+  font-family: fontAwesome, sans-serif;
+  float: right;
+  font-size: 18px;
+  margin-top: -2px;
+}
+
+.accordion .panel-heading .panel-title .accordion-toggle:after {
+  content: "\f107";
+}
+
+.accordion .panel-heading .panel-title .active:after {
+  content: "\f106" !important;
+}

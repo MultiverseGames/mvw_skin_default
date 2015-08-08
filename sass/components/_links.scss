@@ -1,0 +1,19 @@
+a {
+  //  Override bootstrap default
+  color: #fff;
+}
+
+a:hover,
+a:focus {
+  color: #FFD600;
+  text-decoration: none;
+}
+
+a.underline {
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.35);
+}
+
+a.underline:hover,
+a.underline:focus {
+  border-color: #FFD600;
+}

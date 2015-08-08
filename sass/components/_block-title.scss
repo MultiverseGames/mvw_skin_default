@@ -1,0 +1,12 @@
+.block-title {
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 5px 10px 5px;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
+.block-title.initial {
+  font-size: initial;
+}

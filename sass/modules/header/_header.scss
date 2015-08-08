@@ -1,0 +1,173 @@
+#turntime {
+    font-size: 15px;
+    padding-top: 10px;
+    margin-right: 4px;
+}
+
+#menu-toggle {
+    width: 45px;
+    height: 49px;
+    //  background-repeat: no-repeat;
+    //  background-position: center;
+    float: left;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 14px 12px 13px;
+    background-color: rgba(0, 0, 0, 0.5);
+    //  #menu-toggle { background-image: url(../img/icon/menu.png); }
+}
+
+.fa.top {
+    vertical-align: middle;
+    width: 40px;
+    line-height: 48px;
+    float: left;
+}
+
+.menu-toggled .side-menu {
+    overflow: hidden;
+}
+/* Header */
+
+#header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    min-height: 50px;
+    position: relative;
+    padding-right: 7px;
+    z-index: 10000;
+    width: 100%; //keeps the header wide when sticky header activates
+}
+
+#header,
+#header > .media-body,
+#header #top-menu {
+    overflow: visible;
+}
+/* Logo */
+
+.logo {
+    width: 233px;
+    height: 50px;
+    text-align: center;
+    padding: 14px 0 12px 40px;
+    font-size: 16px;
+    margin-right: 9px !important;
+    background: rgba(0, 0, 0, 0.23);
+}
+/* Top Menu */
+
+#top-menu .tm-icon {
+    margin: 0;
+}
+
+#top-menu .tm-icon:hover span,
+#top-menu .tm-icon.open span,
+.drawer-toggle.open span {
+    min-width: 80px !important;
+}
+
+#top-menu .time {
+    font-size: 15px;
+    margin-top: 10px;
+    padding-top: 0;
+    margin-right: 0;
+}
+
+#top-menu .tm-icon > a {
+    padding: 0 8px 0 0;
+    white-space: nowrap;
+    height: 50px;
+    float: left;
+}
+
+#top-menu .tm-icon > a:hover,
+#top-menu .tm-icon > a:focus {
+    color: #fff;
+}
+
+#top-menu .tm-icon img {
+    float: left;
+}
+
+#top-menu .tm-icon span {
+    width: 0px;
+    float: left;
+    overflow: hidden;
+    line-height: 48px;
+}
+
+#top-menu .tm-icon:hover span,
+#top-menu .tm-icon.open span,
+.drawer-toggle.open span {
+    width: 70px !important;
+}
+
+#top-menu .tm-icon:hover,
+#top-menu .tm-icon.open {
+    /* background: rgba(0,0,0,0.2) */
+}
+
+#top-menu > .media-body {
+    padding: 7px 7px 6px 5px;
+    min-height: 49px;
+    height: 49px;
+}
+
+#top-menu #time {
+    font-size: 20px;
+    padding-top: 10px;
+    margin-right: 4px;
+}
+
+.drawer {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 0 !important;
+    overflow: hidden;
+    display: none;
+}
+
+.drawer.toggled {
+    height: 308px;
+    margin-bottom: 15px !important;
+    display: block;
+    -webkit-animation-name: flipInX;
+    animation-name: flipInX;
+}
+
+.drawer-close {
+    font-size: 21px;
+    position: absolute;
+    top: -2px;
+    right: 0;
+    cursor: pointer;
+    width: 30px;
+    text-align: right;
+    padding-right: 10px;
+    cursor: hover;
+}
+
+.drawer-close:hover {
+    opacity: 0.7
+}
+
+#notifications .new {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: $sm-brkp-max) {
+    #header {
+        padding: 0;
+    }
+    .logo {
+        width: 100%;
+        margin: 0;
+    }
+    #header > .media-body {
+        padding: 0 7px;
+        white-space: nowrap;
+    }
+    #header > .media-body:hover #time {
+        display: none;
+    }
+}
