@@ -3,6 +3,8 @@
 @import 'vendor/bootstrap-custom';
 @import 'bower_components/open-sans-fontface/sass/open-sans';
 @import 'bower_components/fontawesome/scss/font-awesome';
+@import 'utility/mixins';
+@import 'utility/extends';
 /*Globals*/
 @import 'globals/z-index';
 @import 'globals/fonts';
@@ -18,6 +20,7 @@
 @import 'modules/content';
 @import 'modules/footer';
 @import 'modules/header/header';
+@import 'modules/header/logo';
 @import 'modules/header/notifications';
 @import 'modules/login';
 @import 'modules/message_board';
@@ -33,6 +36,7 @@
 @import 'components/badge';
 @import 'components/buttons';
 @import 'components/block-title';
+@import 'components/drawer';
 @import 'components/dropdown';
 @import 'components/form';
 @import 'components/grid';
@@ -49,4 +53,5 @@
 @import 'components/tables';
 @import 'components/tabs';
 @import 'components/tile';
+@import 'components/tooltips';
 @import 'components/well';

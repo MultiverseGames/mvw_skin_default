@@ -1,0 +1,14 @@
+
+.drawer {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 0;
+  overflow: hidden;
+  display: none;
+}
+
+.drawer.toggled {
+  height: 308px;
+  margin-bottom: 15px;
+  display: block;
+  animation-name: fadeInDown;
+}
