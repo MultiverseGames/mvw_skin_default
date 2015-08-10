@@ -3,51 +3,36 @@
 -----------------------------------------------------------*/
 
 .btn:not(.form-control) {
-  @extend %transition-fast;
-  outline: 0;
-  margin: 0.1em;
-  @include box-shadow(1px, 1px, 1px, rgba(0, 0, 0, 0.2), false);
-  background-color: $colour-button;
-  color: $colour-button-text;
-  font-weight: bold;
-  text-shadow: 1px 1px #1f272b;
-  border: 1px solid #1c252b;
+  //  @extend %transition-fast;
+
+  border: 1px solid #616261;
   border-radius: 3px;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  color: $colour-button-text;
+  background-color: $colour-button;
+  background-image: linear-gradient(to bottom, $colour-button, #0e0e0e);
 
   &:hover {
-    color: #fff;
-    background: $colour-button-hover;
+    border: 1px solid #4a4b4a;
+    background-color: $colour-button-hover;
+    background-image: linear-gradient(to bottom, $colour-button-hover, #282828);
   }
 
   &:active {
     background: $colour-button-pressed;
-    @include box-shadow(1px, 1px, 1px, rgba(255, 255, 255, 0.1), false);
   }
 
 }
 
-//
-//.open .btn.dropdown-toggle {
-//  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgb(0, 0, 0) 100%);
-//
-//  @include box-shadow(1px, 1px, 2px, rgba(255, 0, 0, 0.4), true);
-//  text-shadow: 0 0 4px rgba(255, 255, 255, 0.7);
-//  opacity: 1 !important;
-//  color: #fff;
+//.btn-sm {
+//  padding: 4px 10px 6px;
 //}
 //
-//.open .btn.dropdown-toggle:not(.form-control) {
-//  background: rgba(0, 0, 0, 0.75);
+//.btn-xs {
+//  padding: 3px 7px;
+//  font-size: 10px;
 //}
-
-.btn-sm {
-  padding: 4px 10px 6px;
-}
-
-.btn-xs {
-  padding: 3px 7px;
-  font-size: 10px;
-}
 
 .btn .caret {
   border-top-color: rgba(255, 255, 255, 0.6);
