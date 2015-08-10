@@ -8,10 +8,15 @@
   border: 1px solid #616261;
   border-radius: 3px;
   text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
-  font-weight: bold;
+  //  font-weight: bold;
   color: $colour-button-text;
   background-color: $colour-button;
   background-image: linear-gradient(to bottom, $colour-button, #0e0e0e);
+  opacity: 0.9;
+
+  &:hover, &:active {
+    opacity: 1;
+  }
 
   &:hover {
     border: 1px solid #4a4b4a;
