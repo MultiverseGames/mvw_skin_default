@@ -42,46 +42,34 @@ label {
   text-shadow: none;
   color: #fff;
   box-shadow: none;
-  font-family: open-sans-regular,sans-serif;
-  -webkit-appearance: none;
-}
-
-.form-weapons {
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  text-shadow: none;
-  color: #fff;
-  box-shadow: none;
   font-family: open-sans-regular, sans-serif;
+}
+
+select:not([multiple]) {
+  text-indent: 1px;
+
+  text-overflow: '';
+  line-height: normal !important;
+  background-image: url(../../default/img/select-bg.png);
+  background-repeat: no-repeat;
+  background-position: right center;
   -webkit-appearance: none;
-  width: 15%
+  -moz-appearance: none;
 }
 
-.form-bank {
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  text-shadow: none;
-  color: #fff;
-  box-shadow: none;
-  font-family: open-sans-regular, sans-serif;
-  -webkit-appearance: none;
-  width: 33%
+select option {
+  background-color: #fff;
+  color: #000;
 }
 
-.form-mission {
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  text-shadow: none;
-  color: #fff;
-  box-shadow: none;
-  font-family: open-sans-regular, sans-serif;
-  width: 70%
+.ie9 select:not([multiple]) {
+  background-image: none;
 }
 
-.form-control:focus, .input-focused, .bootstrap-select.open > .form-control {
+.form-control:focus, .input-focused, {
   border-color: rgba(255, 255, 255, 0.4);
   background: rgba(0, 0, 0, 0);
-  box-shadow: none; /* inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(255, 255, 255, 0.6); */
+  box-shadow: none;
 }
 
 .input-focused {
@@ -107,37 +95,6 @@ textarea.form-control {
 
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
   background-color: rgba(238, 238, 238, 0.09);
-}
-
-select:not([multiple]) {
-  text-indent: 1px;
-
-  text-overflow: '';
-  line-height: normal !important;
-  background-image: url(../../default/img/select-bg.png);
-  background-repeat: no-repeat;
-  background-position: right center;
-}
-
-.ie9 select:not([multiple]) {
-  background-image: none;
-}
-
-select option {
-  color: #000;
-}
-
-.ie9 select option:first-child, select[multiple] option {
-  color: #fff !important;
-}
-
-select::-ms-expand {
-  display: none;
-}
-
-/* Checkbox + Radio */
-input[type="checkbox"], input[type="radio"] {
-  opacity: 0;
 }
 
 .radio, .checkbox, .radio-inline, .checkbox-inline {
