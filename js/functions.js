@@ -1,5 +1,5 @@
 function commaSeparateNumber(val) {
-    while (/(\d+)(\d{3})/.test(val.toString())) {
+    while(/(\d+)(\d{3})/.test(val.toString())) {
         val = val.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
     }
     return val;
@@ -8,8 +8,8 @@ function commaSeparateNumber(val) {
 $(document).ready(function() {
 
     /* --------------------------------------------------------
-    Components
-    -----------------------------------------------------------*/
+     Components
+     -----------------------------------------------------------*/
     (function() {
         /* Textarea */
         if ($('.auto-size')[0]) {
@@ -60,8 +60,8 @@ $(document).ready(function() {
     })();
 
     /* --------------------------------------------------------
-    Custom Scrollbar
-    -----------------------------------------------------------*/
+     Custom Scrollbar
+     -----------------------------------------------------------*/
     (function() {
         if ($('.overflow')[0]) {
             var overflowRegular, overflowInvisible = false;
@@ -70,8 +70,8 @@ $(document).ready(function() {
     })();
 
     /* --------------------------------------------------------
-    Form Validation
-    -----------------------------------------------------------*/
+     Form Validation
+     -----------------------------------------------------------*/
     (function() {
         if ($("[class*='form-validation']")[0]) {
             $("[class*='form-validation']").validationEngine();
@@ -86,8 +86,8 @@ $(document).ready(function() {
 
 
     /* ---------------------------
-    Vertical tab
-    --------------------------- */
+     Vertical tab
+     --------------------------- */
     (function() {
         $('.tab-vertical').each(function() {
             var tabHeight = $(this).outerHeight();
@@ -96,110 +96,15 @@ $(document).ready(function() {
             if ((tabContentHeight) > (tabHeight)) {
                 $(this).height(tabContentHeight);
             }
-        })
-
-        $('body').on('click touchstart', '.tab-vertical li', function() {
-            var tabVertical = $(this).closest('.tab-vertical');
-            tabVertical.height('auto');
-
-            var tabHeight = tabVertical.outerHeight();
-            var tabContentHeight = $(this).closest('.tab-container').find('.tab-content').outerHeight();
-
-            if ((tabContentHeight) > (tabHeight)) {
-                tabVertical.height(tabContentHeight);
-            }
         });
-
 
     })();
-
-    /* --------------------------------------------------------
-    Login + Sign up
-    -----------------------------------------------------------*/
-    (function() {
-        $('body').on('click touchstart', '.box-switcher', function(e) {
-            e.preventDefault();
-            var box = $(this).attr('data-switch');
-            $(this).closest('.box').toggleClass('active');
-            $('#' + box).closest('.box').addClass('active');
-        });
-    })();
-
-    /* --------------------------------------------------------
-    Checkbox + Radio
-    -----------------------------------------------------------*/
-    if ($('input:checkbox, input:radio')[0]) {
-
-        //Checkbox + Radio skin
-        $('input:checkbox:not([data-toggle="buttons"] input, .make-switch input), input:radio:not([data-toggle="buttons"] input)').iCheck({
-            checkboxClass: 'icheckbox_minimal',
-            radioClass: 'iradio_minimal',
-            increaseArea: '20%' // optional
-        });
-
-        //Checkbox listing
-        var parentCheck = $('.list-parent-check');
-        var listCheck = $('.list-check');
-
-        parentCheck.on('ifChecked', function() {
-            $(this).closest('.list-container').find('.list-check').iCheck('check');
-        });
-
-        parentCheck.on('ifClicked', function() {
-            $(this).closest('.list-container').find('.list-check').iCheck('uncheck');
-        });
-
-        listCheck.on('ifChecked', function() {
-            var parent = $(this).closest('.list-container').find('.list-parent-check');
-            var thisCheck = $(this).closest('.list-container').find('.list-check');
-            var thisChecked = $(this).closest('.list-container').find('.list-check:checked');
-
-            if (thisCheck.length == thisChecked.length) {
-                parent.iCheck('check');
-            }
-        });
-
-        listCheck.on('ifUnchecked', function() {
-            var parent = $(this).closest('.list-container').find('.list-parent-check');
-            parent.iCheck('uncheck');
-        });
-
-        listCheck.on('ifChanged', function() {
-            var thisChecked = $(this).closest('.list-container').find('.list-check:checked');
-            var showon = $(this).closest('.list-container').find('.show-on');
-            if (thisChecked.length > 0) {
-                showon.show();
-            } else {
-                showon.hide();
-            }
-        });
-    }
-
-    /* --------------------------------------------------------
-    MAC Hack 
-    -----------------------------------------------------------*/
-    (function() {
-        //Mac only
-        if (navigator.userAgent.indexOf('Mac') > 0) {
-            $('body').addClass('mac-os');
-        }
-    })();
-
-    /* --------------------------------------------------------
-    Photo Gallery
-    -----------------------------------------------------------*/
-    (function() {
-        if ($('.photo-gallery')[0]) {
-            $('.photo-gallery').SuperBox();
-        }
-    })();
-
 });
 
 $(window).load(function() {
     /* --------------------------------------------------------
-    Animate numbers
-    -----------------------------------------------------------*/
+     Animate numbers
+     -----------------------------------------------------------*/
     $('.quick-stats').each(function() {
         var target = $(this).find('h2');
         var toAnimate = $(this).find('h2').attr('data-value');
