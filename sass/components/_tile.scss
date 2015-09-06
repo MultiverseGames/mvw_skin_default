@@ -6,20 +6,20 @@
 .tile-title {
   font-size: 12px;
   text-transform: uppercase;
-//  display: inline-block;
+  //  display: inline-block;
   margin: 0;
-//  width: 100%;
+  //  width: 100%;
   padding: 7px 10px 7px;
 }
 
 .tile, .tile-title, .table th {
-  background: rgba(0, 0, 0, 0.65);
+  background: $tile-bg;
 }
 
 .tile-light {
-  background: rgba(0, 0, 0, 0.25);
+  background: $tile-bg-light;
 }
 
 .tile-dark {
-  background: rgba(0, 0, 0, 0.8);
+  background: $tile-bg-dark;
 }
