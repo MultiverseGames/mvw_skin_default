@@ -1,15 +1,7 @@
-// This file is a mess of the remnants of old template stuff, needs to be organized
-::selection {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-::-moz-selection {
-  background: rgba(255, 255, 255, 0.1);
-}
-
 html {
   overflow-x: hidden;
 }
+
 
 html,
 body {
@@ -24,10 +16,6 @@ body {
   color: #fff;
   text-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
 }
-
-
-
-
 
 /* HR */
 

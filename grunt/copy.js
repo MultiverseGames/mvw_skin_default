@@ -23,6 +23,12 @@ module.exports = {
                 expand: true,
                 src: ['img/**', 'js/countDown.js'],
                 dest: 'default/'
+            },
+            {
+                expand: true,
+                cwd:'bower_components/trumbowyg/dist/ui/images/',
+                src: ['**'],
+                dest: 'default/css/images/'
             }
         ]
     }

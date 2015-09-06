@@ -6157,12 +6157,6 @@ button.list-group-item-danger {
   font-style: italic; }
 
 /* END Extrabold Italic */
-::selection {
-  background: rgba(255, 255, 255, 0.1); }
-
-::-moz-selection {
-  background: rgba(255, 255, 255, 0.1); }
-
 html {
   overflow-x: hidden; }
 
@@ -9313,30 +9307,6 @@ a.list-group-item.active > .badge,
 .lists-plus > li:before {
   content: "\e106";
   font-size: 8px; }
-
-/* -----------------------------------------
-   Markdown
--------------------------------------------*/
-.md-editor, .md-editor > .md-header, .md-editor .md-footer {
-  display: block; }
-
-.md-editor > .md-header {
-  padding: 0 5px; }
-
-.md-editor > .md-preview {
-  min-height: 150px;
-  padding: 10px; }
-
-.md-editor > textarea {
-  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
-  outline: none;
-  margin: 0;
-  display: block;
-  padding: 10px;
-  color: #fff;
-  background: transparent;
-  width: 100%;
-  border: 0; }
 
 /* Extend Bootstrap panel styles */
 /* Panel + Collapse*/
