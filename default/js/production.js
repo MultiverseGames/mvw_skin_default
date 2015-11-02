@@ -230,7 +230,14 @@ dmf.registerModule('page-detector', function(c, config) {
         var fullpath = location.pathname.substring(1).split('.')[0];
         var subpath = fullpath.split('/');
 
-        return subpath.pop();
+        var page = subpath.pop();
+
+        if (page == 'main') {
+            var queryString = location.search.substring(1);
+            page = queryString.split('/')[0];
+        }
+
+        return page
     }
 
     return {
