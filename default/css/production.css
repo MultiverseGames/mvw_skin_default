@@ -8648,6 +8648,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     width: 100%;
     margin: 0; } }
 
+#nav-top, #nav-top * {
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
 #nav-top .btn {
   border-radius: 0; }
 
@@ -8924,6 +8928,10 @@ ul.menu-item a.active {
 
 .universe-quickaction {
   min-width: 50px; }
+
+#universetable, #universetable * {
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 @media (min-width: 1200px) {
   #universe-search {
