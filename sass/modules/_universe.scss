@@ -2,6 +2,10 @@
   min-width: 50px
 }
 
+#universetable {
+  @include overflow-truncate();
+}
+
 @media (min-width: $lg-brkp) {
   #universe-search {
     position: relative;

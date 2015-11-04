@@ -1,4 +1,6 @@
 #nav-top {
+  @include overflow-truncate();
+
   .btn {
     border-radius: 0;
   }
