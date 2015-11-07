@@ -1,5 +1,8 @@
 #nav-top {
-  @include overflow-truncate();
+
+  & [class*='col-'] {
+    @include overflow-truncate();
+  }
 
   .btn {
     border-radius: 0;
