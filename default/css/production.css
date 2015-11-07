@@ -8650,7 +8650,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #nav-top [class*='col-'], #nav-top [class*='col-'] * {
   overflow: hidden;
-  text-overflow: ellipsis; }
+  text-overflow: ellipsis;
+  white-space: nowrap; }
 
 #nav-top .btn {
   border-radius: 0; }
@@ -8929,9 +8930,10 @@ ul.menu-item a.active {
 .universe-quickaction {
   min-width: 50px; }
 
-#universetable [class*='col-'], #universetable [class*='col-'] * {
+#universetable .user-name, #universetable .user-name *, #universetable .alliance-name, #universetable .alliance-name * {
   overflow: hidden;
-  text-overflow: ellipsis; }
+  text-overflow: ellipsis;
+  white-space: nowrap; }
 
 @media (min-width: 1200px) {
   #universe-search {
