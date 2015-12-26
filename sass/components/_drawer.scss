@@ -6,6 +6,10 @@
   display: none;
 }
 
+.drawer-toggle {
+  display: inline-block;
+}
+
 .drawer.toggled {
   height: 308px;
   margin-bottom: 15px;
