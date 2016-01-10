@@ -17,10 +17,6 @@ dmf.registerModule('operations', function(c, config) {
 
     }
 
-
-
-
-
     return {
         start: start
     };

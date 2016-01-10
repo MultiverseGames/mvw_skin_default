@@ -27,7 +27,7 @@ The follow section pertains to the development of new skins, and contains releva
 	
 	This should not be possible regardless, but for the sake of clarity, any attempts to execute server side code will not be permitted. 
 
-**This restriction does not prohibit the use of any api the game has made available specifically for usage by skins*.
+**This restriction does not prohibit the use of any api we have intentionally made available. (for example, chat updates via ajax)*.
 
 ###**1.2 Skin Recommendations**
 1. File Versioning

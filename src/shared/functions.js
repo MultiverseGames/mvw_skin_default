@@ -9,23 +9,6 @@ function commaSeparateNumber(val) {
  Components
  -----------------------------------------------------------*/
 (function() {
-    /* Textarea */
-    //$('.auto-size').autosize();
-    //Select
-    //$('.select').selectpicker();
-    //Sortable
-    //$('.sortable').sortable();
-    //Tag Select
-    //$('.tag-select').chosen();
-
-    /* Tab */
-    //if ($('.tab')[0]) {
-    //    $('.tab a').click(function(e) {
-    //        e.preventDefault();
-    //        $(this).tab('show');
-    //    });
-    //}
-
     /* Collapse */
     $('.collapse').collapse();
 
@@ -41,46 +24,6 @@ function commaSeparateNumber(val) {
     //Popover
     $('.pover').popover();
 })();
-
-/* --------------------------------------------------------
- Custom Scrollbar
- -----------------------------------------------------------*/
-//(function() {
-//        var overflowRegular, overflowInvisible = false;
-//        overflowRegular = $('.overflow').niceScroll();
-//})();
-
-/* --------------------------------------------------------
- Form Validation
- -----------------------------------------------------------*/
-//(function() {
-//    if ($("[class*='form-validation']")[0]) {
-//        $("[class*='form-validation']").validationEngine();
-//
-//        //Clear Prompt
-//        $('body').on('click', '.validation-clear', function(e) {
-//            e.preventDefault();
-//            $(this).closest('form').validationEngine('hide');
-//        });
-//    }
-//})();
-
-
-/* ---------------------------
- Vertical tab
- --------------------------- */
-//    (function() {
-//        $('.tab-vertical').each(function() {
-//            var tabHeight = $(this).outerHeight();
-//            var tabContentHeight = $(this).closest('.tab-container').find('.tab-content').outerHeight();
-//
-//            if ((tabContentHeight) > (tabHeight)) {
-//                $(this).height(tabContentHeight);
-//            }
-//        });
-//
-//    })();
-//});
 
 /* --------------------------------------------------------
  Animate numbers
