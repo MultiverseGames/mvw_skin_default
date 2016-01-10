@@ -5,7 +5,7 @@ module.exports = {
             sourceMap: true
         },                            // target
         files: {                        // dictionary of files
-            'default/css/production.css': 'sass/main.scss'     // 'destination': 'source'
+            'default/css/production.css': 'src/core/main.scss'     // 'destination': 'source'
         }
     }
 };

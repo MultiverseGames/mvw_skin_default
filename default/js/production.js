@@ -84,52 +84,6 @@ dmf.registerModule('all', function(c) {
     }
 });
 
-dmf.registerModule('bank', function(c, config) {
-    'use strict';
-
-    var elements = {};
-
-    function start() {
-        elements['bank-withdraw'] = document.getElementById('bank-withdraw'); //main panel / container
-        bindEvents();
-    }
-
-    function bindEvents() {
-        $(elements['bank-withdraw']).on('click', '.withdraw-max-fill', changeValue);
-    }
-
-    function changeValue(event) {
-        var maxLink = event.target;
-        var label = $(maxLink).parents('label');
-        var input = document.getElementById(label.attr('for'));
-        input.value = maxLink.innerHTML;
-    }
-
-    return {
-        start: start
-    };
-});
-
-dmf.registerModule('name-of-module', function(c, config) {
-    'use strict';
-
-    // Example start function, will execute when module is started
-    function startFunction() {}
-
-    // Example stop function, will execute when module is stopped
-    function stopFunction() {}
-
-    function someEventHandler(eventData) {}
-
-    return { // setup options are optional, but an object must be returned
-        listeners: {
-            'someEvent': someEventHandler
-        }, // Can stay blank or be absent. Used for communicating between modules
-        start: startFunction, //include to have a function execute when the module starts
-        stop: stopFunction //include to have a function execute when the module stops
-    }
-});
-
 dmf.registerModule('launcher', function(c, config) {
     'use strict';
 
@@ -150,6 +104,40 @@ dmf.registerModule('launcher', function(c, config) {
     function startPageModule(page) {
         // Start module responsible for the detected page
         c.startModule(page);
+    }
+
+    return {
+        start: initialize
+    };
+
+});
+
+dmf.registerModule('page-detector', function(c, config) {
+    'use strict';
+
+    function initialize() {
+        var page = getPage();
+        c.announce('page-detected', page);
+    }
+
+    /************* General Functions ******************************************/
+
+    /**
+     * Get the current page
+     * @returns String - name of page file, not including extension
+     */
+    function getPage() {
+        var fullpath = location.pathname.substring(1).split('.')[0];
+        var subpath = fullpath.split('/');
+
+        var page = subpath.pop();
+
+        if (page == 'main') {
+            var queryString = location.search.substring(1);
+            page = queryString.split('/')[0];
+        }
+
+        return page
     }
 
     return {
@@ -212,40 +200,6 @@ dmf.registerModule('operations', function(c, config) {
 
 });
 
-dmf.registerModule('page-detector', function(c, config) {
-    'use strict';
-
-    function initialize() {
-        var page = getPage();
-        c.announce('page-detected', page);
-    }
-
-    /************* General Functions ******************************************/
-
-    /**
-     * Get the current page
-     * @returns String - name of page file, not including extension
-     */
-    function getPage() {
-        var fullpath = location.pathname.substring(1).split('.')[0];
-        var subpath = fullpath.split('/');
-
-        var page = subpath.pop();
-
-        if (page == 'main') {
-            var queryString = location.search.substring(1);
-            page = queryString.split('/')[0];
-        }
-
-        return page
-    }
-
-    return {
-        start: initialize
-    };
-
-});
-
 dmf.registerModule('population', function(c, config) {
     'use strict';
 
@@ -270,57 +224,24 @@ dmf.registerModule('population', function(c, config) {
 
 });
 
-dmf.registerModule('weapons', function(c, config) {
+dmf.registerModule('name-of-module', function(c, config) {
     'use strict';
 
-    var elements = {};
+    // Example start function, will execute when module is started
+    function startFunction() {}
 
-    function initialize() {
-        elements.buyweapons = document.getElementById('buyweapons'); //main panel / container
-        elements.purchaseTable = document.getElementById('ship-purchase-table');
-        elements.purchaseInputs = elements.purchaseTable.getElementsByTagName('input');
+    // Example stop function, will execute when module is stopped
+    function stopFunction() {}
 
-        bindEvents();
+    function someEventHandler(eventData) {}
+
+    return { // setup options are optional, but an object must be returned
+        listeners: {
+            'someEvent': someEventHandler
+        }, // Can stay blank or be absent. Used for communicating between modules
+        start: startFunction, //include to have a function execute when the module starts
+        stop: stopFunction //include to have a function execute when the module stops
     }
-
-    function bindEvents() {
-        $(elements.purchaseTable).on('click', '.ship-max-fill', changeValue);
-    }
-
-    /************* General Functions ******************************************/
-
-    /**
-     * When the 'max-fill' links are clicked, pastes the value into the matching
-     * input and resets all others to 0
-     */
-    function changeValue(event) {
-        var clickedElement = event.target;
-
-        resetPurchaseInputs();
-
-        // Select the cell previous to that clicked, set it's input to the selected value
-
-        var selectedValue = clickedElement.innerHTML;
-        var previousCell = clickedElement.parentNode.previousElementSibling;
-        var input = previousCell.getElementsByTagName('input')[0];
-
-        input.value = selectedValue;
-
-        return false;
-    }
-
-    function resetPurchaseInputs() {
-        for (var i = 0; i < elements.purchaseInputs.length; i++) {
-            if (elements.purchaseInputs[i].nodeName === 'INPUT' && elements.purchaseInputs[i].type === 'text') {
-                elements.purchaseInputs[i].value = 0;
-            }
-        }
-    }
-
-    return {
-        start: initialize
-    };
-
 });
 
 function commaSeparateNumber(val) {
@@ -430,5 +351,58 @@ $('.quick-stats').each(function() {
 
 });
 
+
+dmf.registerModule('weapons', function(c, config) {
+    'use strict';
+
+    var elements = {};
+
+    function initialize() {
+        elements.buyweapons = document.getElementById('buyweapons'); //main panel / container
+        elements.purchaseTable = document.getElementById('ship-purchase-table');
+        elements.purchaseInputs = elements.purchaseTable.getElementsByTagName('input');
+
+        bindEvents();
+    }
+
+    function bindEvents() {
+        $(elements.purchaseTable).on('click', '.ship-max-fill', changeValue);
+    }
+
+    /************* General Functions ******************************************/
+
+    /**
+     * When the 'max-fill' links are clicked, pastes the value into the matching
+     * input and resets all others to 0
+     */
+    function changeValue(event) {
+        var clickedElement = event.target;
+
+        resetPurchaseInputs();
+
+        // Select the cell previous to that clicked, set it's input to the selected value
+
+        var selectedValue = clickedElement.innerHTML;
+        var previousCell = clickedElement.parentNode.previousElementSibling;
+        var input = previousCell.getElementsByTagName('input')[0];
+
+        input.value = selectedValue;
+
+        return false;
+    }
+
+    function resetPurchaseInputs() {
+        for (var i = 0; i < elements.purchaseInputs.length; i++) {
+            if (elements.purchaseInputs[i].nodeName === 'INPUT' && elements.purchaseInputs[i].type === 'text') {
+                elements.purchaseInputs[i].value = 0;
+            }
+        }
+    }
+
+    return {
+        start: initialize
+    };
+
+});
 
 //# sourceMappingURL=production.js.map

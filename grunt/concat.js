@@ -15,8 +15,8 @@ module.exports = {
     },
     js_src: {
         src: [
-            'js/dmf_modules/**/*.js',
-            'js/functions.js'
+            'src/**/*.js',
+            'src/shared/functions.js'
         ],
         dest: 'default/js/production.js'
     }

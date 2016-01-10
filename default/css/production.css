@@ -6057,6 +6057,9 @@ button.list-group-item-danger {
 .fa-medium:before {
   content: ""; }
 
+.btn:not(.form-control) {
+  transition-duration: 0.2s; }
+
 /*Globals*/
 #header {
   z-index: 3; }
@@ -8576,201 +8579,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   .menu-active #content {
     margin-left: 0; } }
 
-/** Will always apply unless overridden below */
-.page-footer {
-  width: 100%;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.8);
-  font-size: 1.1em; }
-
-/** Stuff to apply on medium screens and smaller */
-/** Stuff to apply on medium screens and larger */
-@media (min-width: 992px) {
-  .page-footer {
-    clear: both;
-    position: static;
-    bottom: 0;
-    left: 0;
-    height: 250px;
-    /* Height of the footer element */ } }
-
-#turntime {
-  font-size: 15px;
-  padding-top: 10px;
-  margin-right: 4px; }
-
-#menu-toggle {
-  width: 45px;
-  height: 49px;
-  float: left;
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding: 14px 12px 13px;
-  background-color: rgba(0, 0, 0, 0.5); }
-
-.fa.top {
-  vertical-align: middle;
-  width: 40px;
-  line-height: 48px;
-  float: left; }
-
-.menu-toggled .side-menu {
-  overflow: hidden; }
-
-/* Header */
-#header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  min-height: 50px;
-  position: relative;
-  padding-right: 7px;
-  width: 100%; }
-
-@media (max-width: 767px) {
-  #header {
-    padding: 0; }
-  .logo {
-    width: 100%;
-    margin: 0; } }
-
-/* Logo */
-.logo {
-  width: 233px;
-  height: 50px;
-  text-align: center;
-  padding: 14px 0 12px 40px;
-  font-size: 16px;
-  margin-right: 9px !important;
-  background: rgba(0, 0, 0, 0.23); }
-
-@media (max-width: 767px) {
-  .logo {
-    width: 100%;
-    margin: 0; } }
-
-#nav-top [class*='col-'], #nav-top [class*='col-'] * {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap; }
-
-#nav-top .btn {
-  border-radius: 0; }
-
-#notifications .new {
-  background-color: rgba(255, 255, 255, 0.1); }
-
-.n-count {
-  background: #F00000;
-  font-size: 11px;
-  position: absolute;
-  text-align: center;
-  padding: 2px 3px 3px;
-  border-radius: 2px;
-  margin: 7px 0 0 -13px;
-  font-style: normal;
-  line-height: 100%;
-  animation-name: bounceIn;
-  font-family: open-sans-regular, sans-serif;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); }
-
-/* Login */
-#login > header > h1, #error-page h1 {
-  margin: 0; }
-
-#login .box {
-  padding: 20px 20px 25px;
-  margin-top: 30px;
-  position: absolute;
-  display: none; }
-
-#login .box.active {
-  display: block;
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn; }
-
-[class="form-type-"] {
-  position: absolute;
-  top: 50%; }
-
-#login .login-control {
-  width: 100%;
-  border: 0;
-  padding: 7px 10px;
-  background: rgba(0, 0, 0, 0.35); }
-
-@media (max-width: 767px) {
-  #login {
-    padding: 30px 15px; }
-  #login .box {
-    width: 100%;
-    width: calc(100% - 30px); } }
-
-@media (min-width: 768px) {
-  /* Login */
-  #login {
-    padding: 30px; }
-  #login > header > h1, #error-page h1 {
-    font-size: 60px; }
-  #login .box {
-    width: 500px; } }
-
-#thread-list .new,
-.unviewed {
-  /*background: rgba(255, 255, 255, 0.05);*/
-  background: rgba(0, 0, 255, 0.15); }
-
-.thread-post .panel-body {
-  white-space: pre-line; }
-
-.thread-post .post-own {
-  color: #03ffee; }
-
-#register > header > h1, #error-page h1 {
-  margin: 0; }
-
-#register .box {
-  padding: 20px 20px 25px;
-  margin-top: 30px;
-  position: absolute;
-  display: none; }
-
-#register .register-control {
-  width: 100%;
-  border: 0;
-  padding: 7px 10px;
-  background: rgba(0, 0, 0, 0.75); }
-
-#register .box.active {
-  display: block;
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn; }
-
-@media (max-width: 991px) {
-  #register {
-    padding: 30px 15px; }
-  #register .box {
-    width: 100%;
-    width: calc(100% - 30px); } }
-
-#research-attack tbody {
-  background-color: rgba(215, 44, 44, 0.05); }
-
-#research-hull tbody {
-  background-color: rgba(90, 57, 232, 0.05); }
-
-#research-shield tbody {
-  background-color: rgba(90, 242, 232, 0.05); }
-
-#research-economy tbody {
-  background-color: rgba(255, 255, 255, 0.05); }
-
-.research-item-desc {
-  /* make research descriptions looks a little bulkier*/
-  padding: 1em; }
-
-.research-item-desc strong {
-  font-size: 115%; }
-
 /* Sidebar */
 #sidebar {
   width: 233px;
@@ -8920,12 +8728,206 @@ ul.menu-item a.active {
     color: #fff;
     opacity: 1; } }
 
+/** Will always apply unless overridden below */
+.page-footer {
+  width: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  font-size: 1.1em; }
+
+/** Stuff to apply on medium screens and smaller */
+/** Stuff to apply on medium screens and larger */
+@media (min-width: 992px) {
+  .page-footer {
+    clear: both;
+    position: static;
+    bottom: 0;
+    left: 0;
+    height: 250px;
+    /* Height of the footer element */ } }
+
+#turntime {
+  font-size: 15px;
+  padding-top: 10px;
+  margin-right: 4px; }
+
+#menu-toggle {
+  width: 45px;
+  height: 49px;
+  float: left;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 14px 12px 13px;
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.fa.top {
+  vertical-align: middle;
+  width: 40px;
+  line-height: 48px;
+  float: left; }
+
+.menu-toggled .side-menu {
+  overflow: hidden; }
+
+/* Header */
+#header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  min-height: 50px;
+  position: relative;
+  padding-right: 7px;
+  width: 100%; }
+
+@media (max-width: 767px) {
+  #header {
+    padding: 0; }
+  .logo {
+    width: 100%;
+    margin: 0; } }
+
+/* Logo */
+.logo {
+  width: 233px;
+  height: 50px;
+  text-align: center;
+  padding: 14px 0 12px 40px;
+  font-size: 16px;
+  margin-right: 9px !important;
+  background: rgba(0, 0, 0, 0.23); }
+
+@media (max-width: 767px) {
+  .logo {
+    width: 100%;
+    margin: 0; } }
+
+@media (max-width: 991px) {
+  #nav-top [class*='col-'] {
+    padding: 5px; } }
+
+#notifications .new {
+  background-color: rgba(255, 255, 255, 0.1); }
+
+.n-count {
+  background: #F00000;
+  font-size: 11px;
+  position: absolute;
+  text-align: center;
+  padding: 2px 3px 3px;
+  border-radius: 2px;
+  margin: 7px 0 0 -13px;
+  font-style: normal;
+  line-height: 100%;
+  animation-name: bounceIn;
+  font-family: open-sans-regular, sans-serif;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); }
+
+/* Login */
+#login > header > h1, #error-page h1 {
+  margin: 0; }
+
+#login .box {
+  padding: 20px 20px 25px;
+  margin-top: 30px;
+  position: absolute;
+  display: none; }
+
+#login .box.active {
+  display: block;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn; }
+
+[class="form-type-"] {
+  position: absolute;
+  top: 50%; }
+
+#login .login-control {
+  width: 100%;
+  border: 0;
+  padding: 7px 10px;
+  background: rgba(0, 0, 0, 0.35); }
+
+@media (max-width: 767px) {
+  #login {
+    padding: 30px 15px; }
+  #login .box {
+    width: 100%;
+    width: calc(100% - 30px); } }
+
+@media (min-width: 768px) {
+  /* Login */
+  #login {
+    padding: 30px; }
+  #login > header > h1, #error-page h1 {
+    font-size: 60px; }
+  #login .box {
+    width: 500px; } }
+
+#thread-list .new,
+.unviewed {
+  /*background: rgba(255, 255, 255, 0.05);*/
+  background: rgba(0, 0, 255, 0.15); }
+
+.thread-post .panel-body {
+  white-space: pre-line; }
+
+.thread-post .post-own {
+  color: #03ffee; }
+
+#register > header > h1, #error-page h1 {
+  margin: 0; }
+
+#register .box {
+  padding: 20px 20px 25px;
+  margin-top: 30px;
+  position: absolute;
+  display: none; }
+
+#register .register-control {
+  width: 100%;
+  border: 0;
+  padding: 7px 10px;
+  background: rgba(0, 0, 0, 0.75); }
+
+#register .box.active {
+  display: block;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn; }
+
+@media (max-width: 991px) {
+  #register {
+    padding: 30px 15px; }
+  #register .box {
+    width: 100%;
+    width: calc(100% - 30px); } }
+
+#research-attack tbody {
+  background-color: rgba(215, 44, 44, 0.05); }
+
+#research-hull tbody {
+  background-color: rgba(90, 57, 232, 0.05); }
+
+#research-shield tbody {
+  background-color: rgba(90, 242, 232, 0.05); }
+
+#research-economy tbody {
+  background-color: rgba(255, 255, 255, 0.05); }
+
+.research-item-desc {
+  /* make research descriptions looks a little bulkier*/
+  padding: 1em; }
+
+.research-item-desc strong {
+  font-size: 115%; }
+
 .covert-report-unknown {
   border: 1px dotted white;
   text-align: center;
   font-size: large;
   font-variant: small-caps;
   min-height: 50px; }
+
+.covert-operation-panel input {
+  margin-bottom: 0.25em; }
 
 .universe-quickaction {
   min-width: 50px; }
@@ -9028,21 +9030,16 @@ ul.menu-item a.active {
     Buttons
 -----------------------------------------------------------*/
 .btn:not(.form-control) {
-  border: 1px solid #616261;
-  border-radius: 3px;
-  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
-  color: #fff;
-  background-color: #4a4b4a;
-  background-image: linear-gradient(to bottom, #4a4b4a, #0e0e0e);
-  opacity: 0.9; }
-  .btn:not(.form-control):hover, .btn:not(.form-control):active {
-    opacity: 1; }
+  transform: skew(-8deg);
+  border: 1px solid grey;
+  border-radius: 0;
+  background-color: rgba(8, 3, 37, 0.9);
+  color: #fff; }
   .btn:not(.form-control):hover {
-    border: 1px solid #4a4b4a;
-    background-color: #646464;
-    background-image: linear-gradient(to bottom, #646464, #282828); }
+    border-color: #D92B4C;
+    background-color: #D92B4C; }
   .btn:not(.form-control):active {
-    background: #363736; }
+    background-color: #891b30; }
 
 .btn .caret {
   border-top-color: rgba(255, 255, 255, 0.6); }
@@ -9385,7 +9382,8 @@ a.list-group-item.active > .badge,
   width: 100%;
   margin: 0;
   opacity: 0.5;
-  pointer-events: none; }
+  pointer-events: none;
+  transform: skewX(-8deg); }
 
 /* Tables */
 .table > thead > tr > th {

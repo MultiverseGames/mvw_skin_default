@@ -1,16 +1,16 @@
 module.exports = {
     js: {
-        files: ['js/**/*'],
+        files: ['src/**/*.js'],
         tasks: ['js_src']
     },
     sass: {
-        files: ['sass/**/*.scss'],
+        files: ['src/**/*.scss'],
         tasks: ['css']
     },
     html: {
-        files: ['before.html','after.html','img/**/*'],
-        tasks: ['newer:copy','version']
-    },    
+        files: ['before.html', 'after.html', 'img/**/*'],
+        tasks: ['newer:copy', 'version']
+    },
     grunt: {
         files: ['grunt/**/*'],
         tasks: [],
