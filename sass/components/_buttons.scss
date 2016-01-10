@@ -3,42 +3,27 @@
 -----------------------------------------------------------*/
 
 .btn:not(.form-control) {
-  //  @extend %transition-fast;
+  @extend %transition-fast;
 
-  border: 1px solid #616261;
-  border-radius: 3px;
-  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
-  //  font-weight: bold;
-  color: $colour-button-text;
+  transform: skew(-8deg);
+
+  border: 1px solid $colour-button-border;
+  border-radius: 0;
+
   background-color: $colour-button;
-  background-image: linear-gradient(to bottom, $colour-button, #0e0e0e);
-  opacity: 0.9;
-
-  &:hover, &:active {
-    opacity: 1;
-  }
+  color: $colour-button-text;
 
   &:hover {
-    border: 1px solid #4a4b4a;
+    border-color: $colour-button-hover;
     background-color: $colour-button-hover;
-    background-image: linear-gradient(to bottom, $colour-button-hover, #282828);
   }
 
   &:active {
-    background: $colour-button-pressed;
+    background-color: $colour-button-pressed;
   }
-
 }
-
-//.btn-sm {
-//  padding: 4px 10px 6px;
-//}
-//
-//.btn-xs {
-//  padding: 3px 7px;
-//  font-size: 10px;
-//}
 
 .btn .caret {
   border-top-color: rgba(255, 255, 255, 0.6);
 }
+

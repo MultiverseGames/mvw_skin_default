@@ -1,10 +1,15 @@
 //Colors
 
-$colour-button: #4a4b4a;
+//$colour-button: #4a4b4a;
+$colour-button: rgba(8, 3, 37, .9);
+$colour-button-border: grey;
 $colour-button-text: #fff;
 
-$colour-button-hover: #646464;
-$colour-button-pressed: #363736;
+//$colour-button-hover: #646464;
+$colour-button-hover: #D92B4C;
+
+//$colour-button-pressed: #363736;
+$colour-button-pressed: #891b30;
 
 $tile-bg: rgba(0, 0, 0, 0.65);
 $tile-bg-dark: rgba(0, 0, 0, 0.8);
