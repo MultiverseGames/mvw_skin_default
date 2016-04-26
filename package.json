@@ -1,6 +1,6 @@
 {
   "name": "mvw_skin_default",
-  "version": "0.0.795",
+  "version": "0.0.796",
   "author": {
     "name": "David Miller",
     "email": "david__miller@hotmail.com"
@@ -21,7 +21,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-dev-update": "^1.1.0",
     "grunt-newer": "^1.1.0",
-    "grunt-sass": "^1.0.0",
+    "grunt-sass": "^1.1.0",
     "grunt-string-replace": "^1.2.0",
     "grunt-version": "^1.0.0",
     "load-grunt-config": "^0.17.0"
