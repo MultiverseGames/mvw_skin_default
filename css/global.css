@@ -1,3 +1,10 @@
+/* Server error display */
+
+.xdebug-error {
+  margin-left: 3em;
+  color: black;
+}
+
 html {
   overflow-x: hidden;
 }
@@ -23,7 +30,6 @@ hr {
   width: 100%;
 }
 
-
 small {
   color: #fff;
 }
@@ -32,13 +38,11 @@ img {
   max-width: 100%;
 }
 
-
 /* --------------------------------------------------------
     Bootstrap Overrides
 -----------------------------------------------------------*/
 
-.container {
-  width: auto;
+.container-fluid {
   padding: 0;
 }
 
@@ -51,11 +55,6 @@ img {
   min-height: 100%;
   overflow: hidden;
   position: relative;
-}
-
-.main-content {
-  padding-bottom: 55px;
-  /* Height of the footer element */
 }
 
 .side-menu .menu-item {
@@ -137,7 +136,7 @@ img {
     display: inline-block;
     width: auto;
   }
-} 
+}
 
 @media (min-width: 768px) {
   /* Expand Bootstrap Panel styles */
@@ -197,7 +196,6 @@ img {
     width: 500px;
   }
 }
-
 
 /* Stuff to apply on smaller than medium screens  */
 @media (max-width: 991px) {

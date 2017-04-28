@@ -21,6 +21,7 @@
   background: rgba(255,255,255,0.7);
   font-family: open-sans-regular, sans-serif;
   font-size: 14px;
+  margin-bottom:0;
 }
 
 .alert-icon {
@@ -266,11 +267,7 @@ select:not([multiple]) {
 
   text-overflow: '';
   line-height: normal !important;
-  background-image: url(../../default/img/select-bg.png);
-  background-repeat: no-repeat;
-  background-position: right center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  background: url(../../default/img/select-bg.png) no-repeat right center;
 }
 
 select option {
@@ -282,7 +279,7 @@ select option {
   background-image: none;
 }
 
-.form-control:focus, .input-focused, {
+.form-control:focus, .input-focused {
   border-color: rgba(255, 255, 255, 0.4);
   background: rgba(0, 0, 0, 0);
   box-shadow: none;
@@ -331,10 +328,10 @@ textarea.form-control {
   padding-right: 7px;
 }
 
-.no-gutter > [class*='col-'] {
-  padding-right: 0;
-  padding-left: 0;
-}
+/*.no-gutter > [class*='col-'] {*/
+  /*padding-right: 0;*/
+  /*padding-left: 0;*/
+/*}*/
 
 /* headers */
 
@@ -476,10 +473,6 @@ a.list-group-item.active > .badge,
 .lists-plus > li:before {
   content: "\e106";
   font-size: 8px;
-}
-
-.page-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .page-title {

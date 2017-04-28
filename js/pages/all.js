@@ -3,17 +3,17 @@
     $body: $("body"),
     $drawers: $(".drawer"),
     $html: $("html"),
-    $menuToggle: $("#menu-toggle"),
-    $pageContent: $("#content-page"),
-    $sidebar: $("#sidebar")
+    // $menuToggle: $("#menu-toggle"),
+    $pageContent: $("#content-page")
+    // $sidebar: $("#sidebar")
   };
 
   function setUIHandlers() {
-    elements.$menuToggle.on("click touchstart", toggleSideMenu);
+    // elements.$menuToggle.on("click touchstart", toggleSideMenu);
 
-    elements.$sidebar
-      .find(".menu-item")
-      .hover(menuDropdownHoverOn, menuDropdownHoverOff);
+    // elements.$sidebar
+    //   .find(".menu-item")
+    //   .hover(menuDropdownHoverOn, menuDropdownHoverOff);
 
     elements.$body.on("click touchstart", ".drawer-toggle", toggleDrawer);
 
@@ -32,11 +32,11 @@
     hideDrawers();
   }
 
-  function toggleSideMenu(e) {
-    e.preventDefault();
-    elements.$html.toggleClass("menu-active");
-    elements.$sidebar.toggleClass("toggled");
-  }
+  // function toggleSideMenu(e) {
+  //   e.preventDefault();
+  //   elements.$html.toggleClass("menu-active");
+  //   elements.$sidebar.toggleClass("toggled");
+  // }
 
   /**
      * Adds hovered class to the menu icon of parent drop down
