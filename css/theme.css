@@ -17,11 +17,11 @@
 
 /* Alerts */
 .alert {
+  padding: 10px 5px 10px 10px;
   border: 0;
-  background: rgba(255, 255, 255, 0.7);
-  font-family: open-sans-regular, sans-serif;
+  background: rgba(255, 255, 255, 1);
   font-size: 14px;
-  margin-bottom: 0;
+  margin-bottom: 0.5em;
 }
 
 .alert-icon {
@@ -213,19 +213,19 @@
 /* Forms */
 
 /*::-webkit-input-placeholder {*/
-  /*color: rgba(255, 255, 255, 0.7) !important;*/
+/*color: rgba(255, 255, 255, 0.7) !important;*/
 /*}*/
 
 /*:-moz-placeholder {*/
-  /*color: rgba(255, 255, 255, 0.7) !important;*/
+/*color: rgba(255, 255, 255, 0.7) !important;*/
 /*}*/
 
 /*::-moz-placeholder {*/
-  /*color: rgba(255, 255, 255, 0.7) !important;*/
+/*color: rgba(255, 255, 255, 0.7) !important;*/
 /*}*/
 
 /*:-ms-input-placeholder {*/
-  /*color: rgba(255, 255, 255, 0.7) !important;*/
+/*color: rgba(255, 255, 255, 0.7) !important;*/
 /*}*/
 
 .form-control {
@@ -423,6 +423,16 @@ a.list-group-item.active > .badge,
   border: 0;
 }
 
+.n-count {
+  background: #F00000;
+  font-size: 11px;
+  padding: 2px 3px 3px;
+  border-radius: 2px;
+  font-style: normal;
+  line-height: 1em;
+  font-family: open-sans-regular, sans-serif;
+}
+
 /* --------------------------------------------------------
     Unordered Lists
 -----------------------------------------------------------*/
@@ -484,20 +494,31 @@ a.list-group-item.active > .badge,
 
 }
 
-.panel-default > .panel-heading, .panel-footer {
+.panel-default > .panel-footer {
   border: 0;
   background: rgba(0, 0, 0, 0.35);
-  padding: 8px 10px 9px;
+  /*padding: 8px 10px 9px;*/
+  /*display: block;*/
 }
 
-.panel-title, .panel-title > a {
-  font-size: 12px;
-  color: #fff;
+.panel-default > .panel-heading {
+  border: 0;
+  background: whitesmoke;
+  /*padding: 8px 10px 9px;*/
+  /*display: block;*/
 }
 
-.panel-body.compressed {
-  padding: 0 15px;
-  /* removes top/bottom padding */
+.panel-title {
+  font-size: inherit;
+}
+
+.panel-title > a {
+  font-weight: bold;
+}
+
+.panel-title > a:focus,
+.panel-title > a:hover {
+  color: #A78C00;
 }
 
 /* Progress bar */
@@ -594,7 +615,7 @@ a.list-group-item.active > .badge,
 }
 
 .tab-content {
-  padding: 10px 13px;
+  padding: 0;
 }
 
 .tab-right > li {

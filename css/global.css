@@ -19,7 +19,7 @@ body {
   font-size: 12px;
   font-weight: lighter;
   color: #fff;
-  text-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
+  /*text-shadow: 0 0 3px rgba(255, 255, 255, 0.4);*/
 }
 
 body {
@@ -58,17 +58,9 @@ img {
 
 .main-wrapper {
   min-height: 100%;
-  overflow: hidden;
+  height: 100%;
+  /*overflow: hidden;*/
   position: relative;
-}
-
-.side-menu .menu-item {
-  font-size: 125%;
-  line-height: 2;
-}
-
-.menu-item li > a {
-  min-height: 44px;
 }
 
 .box.active {
