@@ -23,9 +23,18 @@ body {
 }
 
 body {
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
+  background-image: url(../img/backgrounds/noise.png);
+  background-color: #40404E;
 }
 
+@media (min-width: 992px) {
+  body {
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-image: url(../img/backgrounds/space.jpg);
+  }
+}
 
 /* HR */
 
@@ -35,84 +44,63 @@ hr {
   width: 100%;
 }
 
-small {
-  color: #fff;
-}
+/*small {*/
+/*color: #fff;*/
+/*}*/
 
-img {
-  max-width: 100%;
-}
-
-/* --------------------------------------------------------
-    Bootstrap Overrides
------------------------------------------------------------*/
-
-.container-fluid {
-  padding: 0;
-}
+/*img {*/
+/*max-width: 100%;*/
+/*}*/
 
 .even-spaced {
   letter-spacing: 1px;
   font-family: "Lucida Console", Monaco, monospace;
 }
 
-.main-wrapper {
-  min-height: 100%;
-  height: 100%;
-  /*overflow: hidden;*/
-  position: relative;
-}
 
-.box.active {
-  display: block;
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
-}
-
-/******************************* END BUTTONS **********************************/
 /******* Overly specific stuff to refactor into something more generic ********/
 
-.mv-upgrade,
-.research-item {
-  transition: width 0.25s;
-}
+/*.mv-upgrade,*/
+/*.research-item {*/
+/*transition: width 0.25s;*/
+/*}*/
 
-.upgrade-cost,
-.upgrade-limit {
-  margin-bottom: 1em;
-}
+/*.upgrade-cost,*/
+/*.upgrade-limit {*/
+/*margin-bottom: 1em;*/
+/*}*/
 
-.upgrade-cost span,
-.upgrade-limit span {
-  /*display: block;*/
+/*.upgrade-cost span,*/
+/*.upgrade-limit span {*/
+/*!*display: block;*!*/
 
-  margin-right: 0.5em;
-}
+/*margin-right: 0.5em;*/
+/*}*/
 
-.upgrade-info {
-  /*padding: 0.5em;*/
+/*.upgrade-info {*/
+/*!*padding: 0.5em;*!*/
 
-  min-height: 105px;
-}
+/*min-height: 105px;*/
+/*}*/
 
-.news-item.new div {
-  background-color: rgba(0, 0, 255, 0.05);
-}
+/*.news-item.new div {*/
+/*background-color: rgba(0, 0, 255, 0.05);*/
+/*}*/
 
-.relation-protection {
-  background-color: rgba(0, 0, 255, 0.05);
-}
+/*.relation-protection {*/
+/*background-color: rgba(0, 0, 255, 0.05);*/
+/*}*/
 
-.relation-neutral {
-}
+/*.relation-neutral {*/
+/*}*/
 
-.relation-peace {
-  background-color: rgba(0, 255, 0, 0.05);
-}
+/*.relation-peace {*/
+/*background-color: rgba(0, 255, 0, 0.05);*/
+/*}*/
 
-.relation-war {
-  background-color: rgba(255, 0, 0, 0.05);
-}
+/*.relation-war {*/
+/*background-color: rgba(255, 0, 0, 0.05);*/
+/*}*/
 
 .break-word {
   word-wrap: break-word;
@@ -128,126 +116,11 @@ img {
   color: #FF0000
 }
 
-@media (max-width: 767px) {
-  nav.btn-group-justified > .btn {
-    display: inline-block;
-    width: auto;
-  }
-}
-
 @media (min-width: 768px) {
   /* Expand Bootstrap Panel styles */
   .panel.inline {
     display: inline-block;
   }
-
-  /* TOS */
-  #tos {
-    padding: 30px;
-  }
-
-  #tos > header > h1, #error-page h1 {
-    font-size: 60px;
-  }
-
-  #tos .box {
-    width: 500px;
-  }
-
-  /* recruitexternal */
-  #recruitexternal {
-    padding: 30px;
-  }
-
-  #recruitexternal > header > h1, #error-page h1 {
-    font-size: 60px;
-  }
-
-  #recruitexternal .box {
-    width: 500px;
-  }
-
-  /* Team */
-  #team {
-    padding: 30px;
-  }
-
-  #team > header > h1, #error-page h1 {
-    font-size: 60px;
-  }
-
-  #team .box {
-    width: 500px;
-  }
-
-  /* Help */
-  #help {
-    padding: 30px;
-  }
-
-  #help > header > h1, #error-page h1 {
-    font-size: 60px;
-  }
-
-  #help .box {
-    width: 500px;
-  }
 }
 
-/* Stuff to apply on smaller than medium screens  */
-@media (max-width: 991px) {
 
-  body {
-    background-image: url(../img/backgrounds/noise.png);
-    background-color: #40404E;
-  }
-
-  /* Team */
-  #team {
-    padding: 30px 15px;
-  }
-
-  #team .box {
-    width: 100%;
-    width: calc(100% - 30px);
-  }
-
-  /* Help */
-  #help {
-    padding: 30px 15px;
-  }
-
-  #help .box {
-    width: 100%;
-    width: calc(100% - 30px);
-  }
-
-  /* tos */
-  #tos {
-    padding: 30px 15px;
-  }
-
-  #tos .box {
-    width: 100%;
-    width: calc(100% - 30px);
-  }
-
-  /* recruitexternal */
-  #recruitexternal {
-    padding: 30px 15px;
-  }
-
-  #recruitexternal .box {
-    width: 100%;
-    width: calc(100% - 30px);
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  body {
-    background-size: 100% 100%;
-    background-attachment: fixed;
-    background-image: url(../img/backgrounds/space.jpg);
-  }
-
-}

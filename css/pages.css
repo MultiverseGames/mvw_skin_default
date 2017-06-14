@@ -1,3 +1,15 @@
+.main-wrapper, .main-wrapper--public {
+  min-height: 100%;
+  position: relative;
+}
+
+@media (min-width: 1200px) {
+  .main-wrapper, .main-wrapper--public {
+    background-color: rgba(255, 255, 255, 0.05);
+    max-width: 1200px;
+  }
+}
+
 /* public header */
 
 .header-public {
@@ -15,18 +27,29 @@
   text-align: right;
 }
 
-.mutations .panel {
+.mutations {
+  /*display: flex;*/
+  /*flex-wrap: wrap;*/
+}
+
+.mutation {
+  /*flex: 1;*/
   display: inline-block;
   vertical-align: top;
   width: 100%;
+  /*max-width: 33%;*/
 }
 
-.mutations .panel-body {
-  min-height: 75px;
+.mutation + .mutation {
+  /*margin-left: 0.5em;*/
+}
+
+.mutation .panel-body {
+  min-height: 150px;
 }
 
 @media (min-width: 576px) {
-  .mutations .panel {
+  .mutation.panel {
     width: 200px;
   }
 }
@@ -35,6 +58,8 @@
 
 .page-footer {
   text-align: center;
+  padding: 0 0.5em;
+  margin-left: 55px;
 }
 
 .page-footer ul {
@@ -43,17 +68,30 @@
 
 @media (min-width: 992px) {
   .page-footer {
-    padding-left: 50px;
     height: 300px;
   }
+}
+
+@media (min-width: 1200px) {
+  .page-footer {
+    height: 200px;
+  }
+}
+
+/* overrides for public page footer */
+
+.main-wrapper--public .page-footer {
+  margin: 0;
+  margin-top: 1em;
 }
 
 /* content */
 
 .page-content {
-  margin-left: 45px;
-  max-width: calc(100% - 40px);
-  height: calc(100% - 300px - 60px);
+  margin-left: 50px;
+  max-width: calc(100% - 50px);
+  padding-right: 1em;
+  min-height: calc(100% - 250px - 70px);
   position: relative;
 }
 
@@ -63,28 +101,32 @@
 
 @media (min-width: 576px) {
   .page-content {
-    /*margin-top: 60px;*/
-    margin-top: 100px;
+    margin-top: 80px;
   }
 }
 
 @media (min-width: 1200px) {
-  .page-content {
-    margin-left: 0;
+  .page-content, .page-content--public {
+    padding: 0 1em;
+    min-height: calc(100% - 200px - 80px);
+  }
+}
+
+/* overrides for page content on public pages */
+@media (min-width: 1200px) {
+  .page-content--public {
+    min-height: calc(100% - 200px);
   }
 }
 
 /* side-menu */
 
 .side-menu {
-  z-index: 10;
   position: fixed;
-  top: 120px;
+  z-index: 9;
   left: 0;
-
   text-align: center;
   width: 45px;
-  height: 100%;
 }
 
 .side-menu .n-count {
@@ -108,21 +150,29 @@
 
 @media (min-width: 576px) {
   .side-menu {
-    top: 100px;
+    top: 80px;
   }
 }
 
-/* header */
+@media (min-width: 1200px) {
+  .side-menu {
+    position: absolute;
+    left: 0.5em;
+  }
+}
 
-.page-header {
+/* top-bar */
+
+.top-bar {
   margin: 0;
+  background: rgba(0, 0, 0, 1);
   margin-bottom: 1em;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.25em 1em;
 }
 
 @media (min-width: 576px) {
-  .page-header {
-    background: rgba(0, 0, 0, 1);
+  .top-bar {
     position: fixed;
     top: 0;
     left: 0;
@@ -131,6 +181,35 @@
     min-height: 50px;
     padding-right: 7px;
     width: 100%; /* keeps the header wide when sticky header activates*/
+  }
+}
+
+@media (min-width: 1200px) {
+  .top-bar {
+    margin: auto;
+    width: 1200px;
+    z-index: 10;
+  }
+}
+
+/* resource bar */
+
+.resource-bar {
+  display: inline-block;
+}
+
+.resource-bar .resource {
+  display: inline-block;
+  width: 120px;
+}
+
+.resource-bar .fa {
+  width: 15px;
+}
+
+@media (min-width: 576px) {
+  .resource-bar {
+    text-align: right;
   }
 }
 
@@ -143,8 +222,13 @@
   margin: 0.5em 0;
 }
 
+.logo img {
+  display: none;
+}
+
 @media (min-width: 576px) {
   .logo {
+    display: inline-block;
     height: 30px;
     line-height: 30px;
     vertical-align: middle;
@@ -152,23 +236,14 @@
   }
 
   .logo img {
+
+  }
+
+  .logo img {
     height: 30px;
+    display: inherit;
   }
 
-}
-
-/*#turntime {*/
-/*font-size: 15px;*/
-/*padding-top: 10px;*/
-/*margin-right: 4px;*/
-/*}*/
-
-/* nav-top */
-
-@media (max-width: 991px) {
-  #nav-top[class*='col-'] {
-    padding: 5px;
-  }
 }
 
 /* notifications */
@@ -181,30 +256,21 @@
   text-align: right;
 }
 
-.page-header .drawer-toggle {
-  position: relative;
-  margin-right: 2em;
-}
-
-.page-header .drawer-toggle .fa {
-  margin-right: 0.25em;
-}
-
-.page-header .n-count {
-  position: absolute;
-  top: 0;
-  left: 100%;
-
-}
-
 /* Landing Page*/
 
-.landing-page .already-registered {
-  display: none;
+.landing-page-section {
+  padding: 1em 2em;
+}
+
+@media (min-width: 768px) {
+  .landing-page-section {
+    padding: 1em 4em;
+  }
 }
 
 .game-feature {
   padding: 0.5em 1em;
+  margin-bottom: 1em;
 }
 
 @media (min-width: 768px) {
@@ -213,10 +279,20 @@
   }
 }
 
+@media (min-width: 1200px) {
+  .game-feature {
+    height: 225px;
+    margin-bottom: 0;
+  }
+}
+
 /* message board */
 
-#thread-list .new,
-.unviewed {
+/*.message-board .thread {*/
+/*padding: 1em;*/
+/*}*/
+
+.threads .new, .unviewed {
   background: rgba(0, 0, 255, 0.15);
 }
 
@@ -227,6 +303,13 @@
 .thread-post.post-own {
   color: rgb(3, 255, 238);
 }
+
+/*@media (min-width: 576px) {*/
+/*.message-board .thread {*/
+/*max-width: 600px;*/
+/*}*/
+
+/*}*/
 
 /* operations */
 
@@ -250,40 +333,6 @@
   min-width: 50px
 }
 
-#universetable.alliance-name, #universetable.user-name {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 
-@media (min-width: 1200px) {
-  #universe-search {
-    position: relative;
-  }
-
-  #universe-search > div {
-    position: fixed;
-  }
-}
-
-/* upkeep */
-
-/* Make the bold numbers in the upkeep panel bigger to stand out more*/
-
-#upkeep .panel-body strong {
-  font-size: 115%;
-}
-
-/* resource bar */
-
-.resource-bar .resource {
-  display: inline-block;
-  width: 120px;
-
-}
-
-.resource-bar .fa {
-  width: 15px;
-}
 
 
