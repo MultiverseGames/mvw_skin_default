@@ -1,6 +1,7 @@
 var pageRegistry = [
     'base',
     'population',
+    'research',
 ];
 
 function commaSeparateNumber(val) {

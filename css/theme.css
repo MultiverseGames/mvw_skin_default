@@ -2,8 +2,6 @@
   padding: 0;
 }
 
-
-
 /* Add the up/down carats to accordions to indicate oopen or closed state */
 
 .accordion .panel-heading .panel-title a:after, .accordion .panel-heading .panel-title a.active:after {
@@ -352,21 +350,36 @@ h3 {
   margin-top: 10px;
 }
 
-h1 small,
-h2 small,
-h3 small,
-h1 .small,
-h2 .small,
-h3 .small {
-  font-size: 60%;
-  color: rgba(255, 255, 255, 0.5);
+/* Override for icons, keeps them consistent in instances such as
+    bootstrap recolouring <small> elements in headers */
+
+.fa {
+  color: white;
 }
+
+.fa.danger {
+  color: #FF0000;
+}
+
+.fa.success {
+  color: #00FF00;
+}
+
+/*h1 small,*/
+/*h2 small,*/
+/*h3 small,*/
+/*h1 .small,*/
+/*h2 .small,*/
+/*h3 .small {*/
+/*font-size: 60%;*/
+/*color: rgba(255, 255, 255, 0.5);*/
+/*}*/
 
 /*Override & expand bootstrap jumbotron class*/
 
-.jumbotron {
-  margin-bottom: 0;
-}
+/*.jumbotron {*/
+/*margin-bottom: 0;*/
+/*}*/
 
 /* links */
 
